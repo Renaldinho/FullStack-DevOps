@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
+import 'firebase/compat/auth';
 
 import * as config from '../../../firebaseconfig.js'
 import firestore = firebase.firestore;
@@ -16,7 +17,7 @@ export class FireAuthService {
 
 
   constructor() {
-    this.firebaseApplication = firebase.initializeApp(config.firebaseConfig);
+    this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
 
@@ -28,8 +29,17 @@ export class FireAuthService {
   private initAuth() {
     this.auth.onAuthStateChanged( (user) => {
       if (user){
-
+        console.log("logged in")
       }
     })
+  }
+
+  public signIn(email: any, password: any) {
+    this.auth.signInWithEmailAndPassword(email,password);
+  }
+
+
+  public register(email: any, password: any) {
+    this.auth.createUserWithEmailAndPassword(email,password);
   }
 }

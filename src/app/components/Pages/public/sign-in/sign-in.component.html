@@ -1,1 +1,8 @@
-<p>sign-in works!</p>
+
+<input [(ngModel)]="email" type="email">
+
+<input [(ngModel)]="password" type="password">
+
+<button (click)="signIn(email,password)">Sign in</button>
+
+<button (click)="regiter(email,password)">Register</button>

@@ -1,1 +1,9 @@
-caca
+<div *ngIf="authService.auth.currentUser==null">
+  <app-sign-in></app-sign-in>
+</div>
+
+
+
+<div *ngIf="authService.auth.currentUser">
+  <p>{{authService.auth.currentUser.uid}}</p>
+</div>

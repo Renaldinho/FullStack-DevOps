@@ -8,7 +8,7 @@ import {FireAuthService} from "../../../../services/fire-auth.service";
 })
 export class HomeComponent {
 
+
   constructor(public authService: FireAuthService) {
   }
-
 }

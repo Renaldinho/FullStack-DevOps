@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './components/Pages/public/sign-in/sign-in.component';
 import { HomeComponent } from './components/Pages/mix/home/home.component';
 import { AboutUsComponent } from './components/Pages/mix/about-us/about-us.component';
+import { PageNotFoundComponent } from './components/Pages/mix/page-not-found/page-not-found.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     HomeComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    PageNotFoundComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
