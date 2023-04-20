@@ -8,6 +8,8 @@ import { HomeComponent } from './components/Pages/mix/home/home.component';
 import { AboutUsComponent } from './components/Pages/mix/about-us/about-us.component';
 import { PageNotFoundComponent } from './components/Pages/mix/page-not-found/page-not-found.component';
 import {FormsModule} from "@angular/forms";
+import { NavBarComponent } from './components/Pages/mix/nav-bar/nav-bar.component';
+import { NavButtonComponent } from './components/generic/nav-button/nav-button.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import {FormsModule} from "@angular/forms";
     SignInComponent,
     HomeComponent,
     AboutUsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavBarComponent,
+    NavButtonComponent
   ],
     imports: [
         BrowserModule,

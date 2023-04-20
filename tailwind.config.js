@@ -1,8 +1,6 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   darkMode: 'class',
-  content: [],
   screens: {
     phone: "600px",
     // => @media (min-width: 640px) { ... }
@@ -14,19 +12,22 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          'shade': '#455173',
-          'accent': '#9B9790'
+          'shade': '#243148',
+          'accent': '#817473'
         },
         light: {
-          'shade': '#C6995A',
-          'accent': '#F3F1EE'
+          'shade': '#f1f1e9',
+          'accent': '#90b4d2'
         },
         brand: {
-          'main': '#6A96C4'
+          'main': '#4b7ad0'
         }
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss"),
+    require("autoprefixer")
+  ]
 }
 

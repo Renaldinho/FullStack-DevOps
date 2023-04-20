@@ -1,0 +1,14 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: "nav-bar"
+                       "content";
+  grid-template-rows: 40px 1fr;
+}
+
+.nav-bar {
+  grid-area: nav-bar;
+}
+
+.content {
+  grid-area: content;
+}
