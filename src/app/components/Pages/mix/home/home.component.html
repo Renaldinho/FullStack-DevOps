@@ -6,4 +6,8 @@
 
 <div *ngIf="authService.auth.currentUser">
   <p>{{authService.auth.currentUser.uid}}</p>
+  <input [(ngModel)]="hobby">
+  <button (click)="addHobby(hobby)">Add hobby</button>
+
+  <button (click)="signOut()">Sign out</button>
 </div>

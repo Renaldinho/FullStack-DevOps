@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FireAuthService} from "../../../../services/fire-auth.service";
+import {FirebaseService} from "../../../../services/firebase.service";
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,17 @@ import {FireAuthService} from "../../../../services/fire-auth.service";
 })
 export class HomeComponent {
 
+  hobby: any;
 
-  constructor(public authService: FireAuthService) {
+
+  constructor(public authService: FirebaseService) {
+  }
+
+  signOut() {
+    this.authService.signOut();
+  }
+
+  public addHobby(hobby: any) {
+    this.authService.addHobby(hobby);
   }
 }
