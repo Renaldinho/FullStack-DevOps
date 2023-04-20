@@ -8,5 +8,11 @@ import {Component, Input} from '@angular/core';
 export class NavButtonComponent {
 
   @Input() displayValue: string | undefined;
+  @Input() buttonId: number | undefined;
 
+  isSelected: boolean = false;
+
+  onClick() {
+    this.isSelected = true;
+  }
 }

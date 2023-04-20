@@ -1,3 +1,5 @@
-<div class="mx-3 h-full flex justify-center items-center">
+<div class="mx-3 h-full flex justify-center items-center dark:hover:border-dark-accent hover:border-light-accent border-b-2 border-x-0 border-t-0 hover:border-solid"
+  [ngClass]="{'border-brand-main hover:border-brand-main border-solid': isSelected}"
+  (click)="onClick()">
   {{displayValue}}
 </div>

@@ -1,4 +1,10 @@
-<div class="flex flex-row-reverse justify- w-full h-full dark:bg-dark-shade bg-light-shade">
-  <app-nav-button [displayValue]="'Home'"></app-nav-button>
-  <app-nav-button [displayValue]="'Profile'"></app-nav-button>
+<div class="flex flex-row-reverse w-full h-full dark:bg-dark-shade bg-light-shade">
+  <app-nav-button *ngFor="let button of pathValues"
+    (click)="onButtonSelect(button)"
+    [displayValue]="button.value"
+    [buttonId]="button.id"
+  >
+
+  </app-nav-button>
+
 </div>
