@@ -60,7 +60,6 @@ export class FirebaseService {
         })
     });
   }
-//other user id - oZssUHuWllUvuOX8QMPFVtqsKwI3
   public addHobby(hobby: any) {
     console.log(this.auth.currentUser)
     this.firestore.collection(this.userCollectionPath)
