@@ -1,0 +1,19 @@
+.sign-in-slide {
+  transition: left 1s cubic-bezier(.38,0,0,.99);
+  left: 0; /* starting position */
+}
+
+.sign-in-slide-triggered {
+  left: 350px; /* end position */
+}
+
+.text-fade-out {
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(.38,0,0,.99);
+}
+
+.text-fade-out-triggered {
+  opacity: 0;
+}
+
+

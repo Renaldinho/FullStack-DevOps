@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {AboutUsComponent} from "./components/Pages/mix/about-us/about-us.component";
 import {HomeComponent} from "./components/Pages/mix/home/home.component";
 import {PageNotFoundComponent} from "./components/Pages/mix/page-not-found/page-not-found.component";
+import {RoutingPaths} from "./interfaces/common-interfaces.service";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent },
-  {path: 'path', component: AboutUsComponent},
-  {path: '**', component: PageNotFoundComponent }
+  {path: RoutingPaths.HOME, component: HomeComponent },
+  {path: RoutingPaths.PAGE_NOT_FOUND, component: PageNotFoundComponent }
 ];
 
 @NgModule({

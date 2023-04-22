@@ -10,6 +10,7 @@ export class SignInComponent {
 
   email: any;
   password: any;
+  login: boolean = false;
 
   constructor(public authService: FirebaseService) {
   }
@@ -20,5 +21,9 @@ export class SignInComponent {
 
   register(email: any, password: any) {
     this.authService.register(email,password);
+  }
+
+  transition(value: boolean) {
+    this.login = value
   }
 }
