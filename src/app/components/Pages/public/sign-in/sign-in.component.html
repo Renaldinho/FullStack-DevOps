@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center bg-transparent w-full h-full">
-  <div class="bg-brand-main w-[700px] h-72 flex items-center relative">
+  <div class="bg-brand-main w-[700px] h-96 flex items-center relative">
 
     <div class="flex-1 flex flex-col justify-center w-full h-full p-10 text-fade-out" (mouseenter)="transition(true)"
          [ngClass]="{'text-fade-out-triggered': login}">
@@ -13,15 +13,16 @@
       <p>Simply sign in</p>
     </div>
 
-    <div class="flex-1 flex flex-col justify-center items-center bg-light-accent m-8 h-96 w-72 rounded-lg absolute left-0 sign-in-slide"
+    <div class="flex-1 flex flex-col justify-center items-center bg-white m-8 h-80 w-72 rounded-lg absolute left-0 sign-in-slide"
          [ngClass]="{'sign-in-slide-triggered': !login}">
 
       <!--Sign in-->
       <div *ngIf="!login" class="flex flex-col justify-center items-center">
-        <input class="mb-2" [(ngModel)]="email" type="email">
-        <input class="mb-2" [(ngModel)]="password" type="password">
-        <button class="mt-2 w-full" (click)="signIn(email,password)">Sign in</button>
-
+        <form autocomplete="off">
+          <app-input-field labelText="Email" inputType="email" iconSrc="https://pics.freeicons.io/uploads/icons/png/14588653751682099060-512.png"></app-input-field>
+          <app-input-field labelText="Password" inputType="password" iconSrc="https://pics.freeicons.io/uploads/icons/png/14588653751682099060-512.png"></app-input-field>
+          <button class="p-2.5 font-black font-Montserrat text-white bg-brand-main w-full border-none">SIGN IN</button>
+        </form>
 
         <hr class="w-full">
         <app-auth-options></app-auth-options>
