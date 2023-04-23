@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFieldComponent } from './input-field.component';
+import { AuthOptionsComponent } from './auth-options.component';
 
-describe('InputFieldComponent', () => {
-  let component: InputFieldComponent;
-  let fixture: ComponentFixture<InputFieldComponent>;
+describe('AuthOptionsComponent', () => {
+  let component: AuthOptionsComponent;
+  let fixture: ComponentFixture<AuthOptionsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ]
+      declarations: [ AuthOptionsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InputFieldComponent);
+    fixture = TestBed.createComponent(AuthOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

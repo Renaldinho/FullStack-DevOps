@@ -21,6 +21,10 @@
         <input class="mb-2" [(ngModel)]="email" type="email">
         <input class="mb-2" [(ngModel)]="password" type="password">
         <button class="mt-2 w-full" (click)="signIn(email,password)">Sign in</button>
+
+
+        <hr class="w-full">
+        <app-auth-options></app-auth-options>
       </div>
       <!--Sign up-->
       <div *ngIf="login" class="flex flex-col justify-center items-center">

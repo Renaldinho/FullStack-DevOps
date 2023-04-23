@@ -16,6 +16,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputFieldComponent } from './components/generic/input-field/input-field.component';
+import { AuthOptionsComponent } from './components/Pages/auth-options/auth-options.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InputFieldComponent } from './components/generic/input-field/input-fiel
     NavButtonComponent,
     UserAvatarComponent,
     UserProfileComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    AuthOptionsComponent
   ],
   imports: [
     BrowserModule,
