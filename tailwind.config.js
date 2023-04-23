@@ -15,15 +15,15 @@ module.exports = {
       },
       colors: {
         dark: {
-          'shade': '#243148',
-          'accent': '#817473'
+          'shade': '#1D2032',
+          'accent': '#796F79'
         },
         light: {
-          'shade': '#f1f1e9',
-          'accent': '#90b4d2'
+          'shade': '#F7F3F0',
+          'accent': '#65B7D5'
         },
         brand: {
-          'main': '#4b7ad0'
+          'main': '#007BFF'
         }
       }
     },

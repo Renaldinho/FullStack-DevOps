@@ -15,6 +15,7 @@ import { UserProfileComponent } from './components/Pages/user-profile/user-profi
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputFieldComponent } from './components/generic/input-field/input-field.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavBarComponent,
     NavButtonComponent,
     UserAvatarComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    InputFieldComponent
   ],
   imports: [
     BrowserModule,
