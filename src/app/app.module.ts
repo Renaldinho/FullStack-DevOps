@@ -12,10 +12,7 @@ import { NavBarComponent } from './components/Pages/mix/nav-bar/nav-bar.componen
 import { NavButtonComponent } from './components/generic/nav-button/nav-button.component';
 import { UserAvatarComponent } from './components/generic/images/user-avatar/user-avatar.component';
 import { UserProfileComponent } from './components/Pages/user-profile/user-profile.component';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InputFieldComponent } from './components/generic/input-field/input-field.component';
 import { AuthOptionsComponent } from './components/Pages/auth-options/auth-options.component';
 
 @NgModule({
@@ -29,16 +26,13 @@ import { AuthOptionsComponent } from './components/Pages/auth-options/auth-optio
     NavButtonComponent,
     UserAvatarComponent,
     UserProfileComponent,
-    InputFieldComponent,
     AuthOptionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule,
     BrowserAnimationsModule
   ],
   providers: [],
