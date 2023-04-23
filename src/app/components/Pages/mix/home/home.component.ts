@@ -11,14 +11,14 @@ export class HomeComponent {
   hobby: any;
 
 
-  constructor(public authService: FirebaseService) {
+  constructor(public firebaseService: FirebaseService) {
   }
 
   signOut() {
-    this.authService.signOut();
+    this.firebaseService.signOut();
   }
 
   public addHobby(hobby: any) {
-    this.authService.addHobby(hobby);
+    this.firebaseService.addHobby(hobby);
   }
 }

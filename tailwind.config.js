@@ -10,6 +10,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        Montserrat: "'Montserrat'"
+      },
       colors: {
         dark: {
           'shade': '#243148',
