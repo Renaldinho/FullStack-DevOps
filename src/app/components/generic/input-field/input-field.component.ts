@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-input-field',
@@ -6,6 +6,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./input-field.component.scss']
 })
 export class InputFieldComponent {
+
+  @ViewChild("InputField") inputField: ElementRef | undefined
 
   @Input() labelText: string | undefined;
   @Input() inputType: string = 'text';
@@ -20,6 +22,10 @@ export class InputFieldComponent {
 
   onBlur() {
     this.isFocused = false;
+  }
+
+  public getInputValue() {
+    return this.inputField?.nativeElement.value;
   }
 
 }

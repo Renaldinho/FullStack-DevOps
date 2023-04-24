@@ -1,7 +1,7 @@
 <div class="form-group" >
   <label>{{labelText}}</label>
-  <div class="relative flex items-center rounded-md p-2.5 border-2 border-solid hover:border-brand-main">
-    <img *ngIf="iconSrc" [src]="iconSrc"  />
-    <input class="bg-transparent" [type]="inputType" [(ngModel)]="inputValue" (focus)="onFocus()" (blur)="onBlur()" />
+  <div class="relative flex items-center rounded-md p-2.5 border-2 pr-5 border-solid hover:border-brand-main">
+    <i *ngIf="iconSrc" [class]="iconSrc"></i>
+    <input #InputField class="bg-transparent" [type]="inputType" [(ngModel)]="inputValue" (focus)="onFocus()" (blur)="onBlur()" />
   </div>
 </div>

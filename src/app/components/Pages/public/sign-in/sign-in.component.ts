@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FirebaseService} from "../../../../services/firebase.service";
 
 @Component({
@@ -8,6 +8,9 @@ import {FirebaseService} from "../../../../services/firebase.service";
 })
 export class SignInComponent {
 
+  @ViewChild("EmailInput") emailInput: ElementRef | undefined
+  @ViewChild("PasswordInput") passwordInput: ElementRef | undefined
+
   email: any;
   password: any;
   login: boolean = false;
@@ -16,6 +19,7 @@ export class SignInComponent {
   }
 
   signIn(email: any, password: any) {
+
     this.authService.signIn(email,password);
   }
 
