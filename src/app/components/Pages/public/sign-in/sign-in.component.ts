@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FirebaseService} from "../../../../services/firebase.service";
+import {InputFieldComponent} from "../../../generic/input-field/input-field.component";
 
 @Component({
   selector: 'app-sign-in',
@@ -8,8 +9,8 @@ import {FirebaseService} from "../../../../services/firebase.service";
 })
 export class SignInComponent {
 
-  @ViewChild("EmailInput") emailInput: ElementRef | undefined
-  @ViewChild("PasswordInput") passwordInput: ElementRef | undefined
+  @ViewChild("EmailInput") emailInput: InputFieldComponent | undefined
+  @ViewChild("PasswordInput") passwordInput: InputFieldComponent | undefined
 
   email: any;
   password: any;
@@ -18,8 +19,9 @@ export class SignInComponent {
   constructor(public authService: FirebaseService) {
   }
 
-  signIn(email: any, password: any) {
-
+  signIn() {
+    const email = this.emailInput?.inputValue;
+    const password = this.passwordInput?.inputValue;
     this.authService.signIn(email,password);
   }
 

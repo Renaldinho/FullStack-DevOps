@@ -21,7 +21,7 @@
         <form>
           <app-input-field #EmailInput class="" labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
           <app-input-field #PasswordInput labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
-          <button class="p-2.5 font-black font-Montserrat text-white bg-brand-main w-full border-none">SIGN IN</button>
+          <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-brand-main w-full border-none">SIGN IN</button>
         </form>
 
         <hr class="w-full">
@@ -31,10 +31,11 @@
       <div *ngIf="login" class="flex flex-col justify-center items-center">
         <input class="mb-2" [(ngModel)]="email" type="email">
         <input class="mb-2" [(ngModel)]="password" type="password">
-        <button class="mt-2 w-full" (click)="signIn(email,password)">Sign up</button>
+        <button class="mt-2 w-full" (click)="signIn()">Sign up</button>
       </div>
 
     </div>
+
 
 
   </div>

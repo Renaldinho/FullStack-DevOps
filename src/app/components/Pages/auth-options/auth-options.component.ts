@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FirebaseService} from "../../../services/firebase.service";
 
 @Component({
   selector: 'app-auth-options',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AuthOptionsComponent {
 
+
+  constructor(public firebaseService: FirebaseService) {
+  }
+
+  handleGoogle() {
+    this.firebaseService.googleSignInPopup();
+  }
+
+  handleFacebook() {
+    this.firebaseService.facebookSignInPopup();
+  }
+
+  handleTwitter() {
+    this.firebaseService.twitterSignInPopup();
+  }
 }

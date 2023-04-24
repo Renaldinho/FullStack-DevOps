@@ -24,8 +24,6 @@ export class InputFieldComponent {
     this.isFocused = false;
   }
 
-  public getInputValue() {
-    return this.inputField?.nativeElement.value;
-  }
+
 
 }

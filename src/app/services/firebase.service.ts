@@ -10,29 +10,44 @@ import firestore = firebase.firestore;
 import {User} from "../interfaces/User";
 import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
+import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
+import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
+  firebaseApplication;
+  firestore: firebase.firestore.Firestore
+  auth: firebase.auth.Auth;
+  storage: firebase.storage.Storage;
+
+  facebookProvider: FacebookAuthProvider
+  googleProvider: GoogleAuthProvider
+  twitterProvider: TwitterAuthProvider
+
+
   userCollectionPath: string = "users"
   userHobbiesPath: string = "hobbies"
 
   userAvatarPath: string = 'avatars'
 
+
   currentUserAvatarURL: string = DefaultUserData.AVATAR_URL;
 
-  firebaseApplication;
-  firestore: firebase.firestore.Firestore
-  auth: firebase.auth.Auth;
-  storage: firebase.storage.Storage;
+
 
   constructor() {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
     this.storage = firebase.storage();
+
+    this.facebookProvider = new FacebookAuthProvider();
+    this.googleProvider = new GoogleAuthProvider();
+    this.twitterProvider = new TwitterAuthProvider();
 
     this.initAuth();
   }
@@ -84,16 +99,7 @@ export class FirebaseService {
 
   public register(email: any, password: any) {
     this.auth.createUserWithEmailAndPassword(email,password).then((userCredentials) => {
-      var userData: User = {
-        uid: userCredentials.user?.uid,
-        email: userCredentials.user?.email,
-      }
-      this.firestore.collection(this.userCollectionPath)
-        .doc(userCredentials.user?.uid)
-        .set(userData)
-        .catch((error) => {
-          console.log(error)
-        })
+      this.persistUser(userCredentials);
     });
   }
   public addHobby(hobby: any) {
@@ -109,5 +115,43 @@ export class FirebaseService {
 
   private resetUserData() {
     this.currentUserAvatarURL = DefaultUserData.AVATAR_URL;
+  }
+
+  googleSignInPopup() {
+    this.auth.signInWithPopup(this.googleProvider)
+      .then((userCredentials) => {
+        this.persistUser(userCredentials);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  private persistUser(userCredentials: firebase.auth.UserCredential) {
+    var userData: User = {
+      uid: userCredentials.user?.uid,
+      email: userCredentials.user?.email,
+    }
+    this.firestore.collection(this.userCollectionPath)
+      .doc(userCredentials.user?.uid)
+      .set(userData)
+      .catch((error) => {
+        console.log(error)
+      })
+
+  }
+
+  facebookSignInPopup() {
+    this.auth.signInWithPopup(this.facebookProvider)
+      .then((userCredentials) => {
+        this.persistUser(userCredentials)
+      })
+      .catch((error) => console.log(error));
+  }
+
+  twitterSignInPopup() {
+    this.auth.signInWithPopup(this.twitterProvider)
+      .then((userCredentials) => {
+        this.persistUser(userCredentials)
+      })
+      .catch((error) => console.log(error));
   }
 }
