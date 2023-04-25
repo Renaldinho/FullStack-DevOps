@@ -25,7 +25,8 @@ module.exports = {
           'accent-secondary': 'rgb(0,0,0)',
           'input-field': {
             'bg': "rgb(158 239 255)"
-          }
+          },
+          'text': '#FFFFFF'
         },
         brand: {
           'main': '#148cbc'

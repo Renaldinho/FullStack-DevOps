@@ -1,0 +1,8 @@
+<div class="box-border h-full flex flex-col w-full rounded-xl p-2 bg-light-shade">
+  <app-user-settings-profile-display></app-user-settings-profile-display>
+  <app-button *ngFor="let option of options"
+              [buttonValue]="option.value"
+              [buttonId]="option.id"
+              (click)="selectOption(option)">
+  </app-button>
+</div>

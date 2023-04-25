@@ -1,5 +1,9 @@
-<div class="flex flex-row-reverse w-full h-full dark:bg-dark-shade bg-light-shade box-border px-6">
-  <app-user-avatar (click)="onButtonSelect(profileBtn)" [navigation]="true"></app-user-avatar>
+<div class="flex flex-row-reverse w-full h-full dark:bg-dark-shade bg-light-accent box-border px-6">
+  <div class="flex justify-center items-center">
+    <div class="w-10 h-10">
+      <app-user-avatar (click)="onButtonSelect(profileBtn)" [navigation]="true"></app-user-avatar>
+    </div>
+  </div>
   <app-nav-button *ngFor="let button of pathValues"
     (click)="onButtonSelect(button)"
     [displayValue]="button.value"

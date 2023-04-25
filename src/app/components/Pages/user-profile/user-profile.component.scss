@@ -3,6 +3,7 @@
   grid-template-columns: 1fr minmax(300px,25%);
   grid-template-rows: 1fr;
   grid-template-areas: "options-config options-selector";
+  grid-column-gap: 40px;
 
 }
 

@@ -1,6 +1,6 @@
 <div class="w-full h-full flex flex-col justify-center items-center">
   <img
-    class="rounded-full w-8 h-8"
+    class="rounded-full w-full h-full"
     [src]="firebaseService.currentUserAvatarURL"
     (click)="!navigation ? fileInput.click() : handleNavigate()"
   >
