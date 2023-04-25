@@ -15,15 +15,20 @@ module.exports = {
       },
       colors: {
         dark: {
-          'shade': '#1D2032',
-          'accent': '#796F79'
+          'shade': '#5d5f7d',
+          'accent': '#282d36',
         },
         light: {
-          'shade': '#F7F3F0',
-          'accent': '#65B7D5'
+          'background': '#FFFFFF',
+          'shade': '#f4d9d1',
+          'accent': '#007BFF',
+          'accent-secondary': 'rgb(0,0,0)',
+          'input-field': {
+            'bg': "rgb(158 239 255)"
+          }
         },
         brand: {
-          'main': '#007BFF'
+          'main': '#148cbc'
         }
       }
     },

@@ -15,6 +15,8 @@ import { UserProfileComponent } from './components/Pages/user-profile/user-profi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthOptionsComponent } from './components/Pages/auth-options/auth-options.component';
 import { InputFieldComponent } from './components/generic/input-field/input-field.component';
+import { UserSettingsOptionsComponent } from './blocks/user-settings-options/user-settings-options.component';
+import { UserSettingsComponent } from './blocks/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { InputFieldComponent } from './components/generic/input-field/input-fiel
     UserAvatarComponent,
     UserProfileComponent,
     AuthOptionsComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    UserSettingsOptionsComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

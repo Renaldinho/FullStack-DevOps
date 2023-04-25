@@ -1,0 +1,16 @@
+.profileWrapper {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px,25%);
+  grid-template-rows: 1fr;
+  grid-template-areas: "options-config options-selector";
+
+}
+
+.optionsSelector {
+  grid-area: options-selector;
+}
+
+.optionsConfiguration {
+  grid-area: options-config;
+
+}

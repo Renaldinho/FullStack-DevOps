@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center bg-transparent w-full h-full">
-  <div class="rounded-3xl bg-brand-main w-[700px] h-96 flex items-center relative">
+  <div class="rounded-3xl bg-light-accent w-[700px] h-96 flex items-center relative">
 
     <div class="flex-1 flex flex-col justify-center w-full h-full p-10 text-fade-out" (mouseenter)="transition(true)"
          [ngClass]="{'text-fade-out-triggered': login}">
@@ -19,9 +19,9 @@
       <!--Sign in-->
       <div *ngIf="!login" class="flex flex-col justify-center items-center">
         <form>
-          <app-input-field #EmailInput class="" labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
+          <app-input-field #EmailInput  labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
           <app-input-field #PasswordInput labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
-          <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-brand-main w-full border-none">SIGN IN</button>
+          <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN IN</button>
         </form>
 
         <hr class="w-full">
@@ -29,9 +29,12 @@
       </div>
       <!--Sign up-->
       <div *ngIf="login" class="flex flex-col justify-center items-center">
-        <input class="mb-2" [(ngModel)]="email" type="email">
-        <input class="mb-2" [(ngModel)]="password" type="password">
-        <button class="mt-2 w-full" (click)="signIn()">Sign up</button>
+        <app-input-field #EmailInput  labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
+        <app-input-field #PasswordInput labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
+        <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN UP</button>
+
+        <hr class="w-full">
+        <app-auth-options></app-auth-options>
       </div>
 
     </div>

@@ -8,8 +8,8 @@ import {UserProfileComponent} from "./components/Pages/user-profile/user-profile
 
 const routes: Routes = [
   {path: RoutingPaths.HOME, component: HomeComponent },
-  {path: RoutingPaths.PAGE_NOT_FOUND, component: PageNotFoundComponent },
-  {path: RoutingPaths.USER_PROFILE, component: UserProfileComponent}
+  {path: RoutingPaths.USER_PROFILE, component: UserProfileComponent},
+  {path: RoutingPaths.PAGE_NOT_FOUND, component: PageNotFoundComponent }
 ];
 
 @NgModule({
