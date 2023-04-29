@@ -16,8 +16,6 @@ export class UserSettingsOptionsComponent {
     { id:1, value:"SERVICES"},
     { id:2, value:"ACCOUNT"},
     { id:3, value:"SECURITY"},
-    { id:4, value:"NOTIFICATIONS"},
-    { id:5, value:"HELP"},
   ]
 
   selectOption(option: contentOptions) {

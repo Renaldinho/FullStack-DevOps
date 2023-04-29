@@ -1,8 +1,6 @@
-<div class="box-border flex flex-col justify-center items-center h-full w-full rounded-xl p-6 bg-light-background border-2 border-light-accent border-solid"
+<div class="box-border flex flex-col justify-center items-center h-full w-full rounded-xl p-6 bg-light-background "
   [ngSwitch]="selectedContent">
   <app-service-management class="w-full h-full" *ngSwitchCase="1"></app-service-management>
-  <div *ngSwitchCase="2">2</div>
-  <div *ngSwitchCase="3">3</div>
-  <div *ngSwitchCase="4">4</div>
-
+  <app-account-settings *ngSwitchCase="2"></app-account-settings>
+  <app-security-settings *ngSwitchCase="3" ></app-security-settings>
 </div>

@@ -19,12 +19,12 @@ module.exports = {
           'accent': '#282d36',
         },
         light: {
-          'background': '#FFFFFF',
-          'shade': '#f4d9d1',
-          'accent': '#007BFF',
-          'accent-secondary': 'rgb(0,0,0)',
+          'background': '#F0F0F0',
+          'shade': '#4e6f5d',
+          'accent': '#395144',
+          'accent-secondary': '#4E6C50',
           'input-field': {
-            'bg': "rgb(158 239 255)"
+            'bg': "#D3E4D8"
           },
           'text': '#FFFFFF'
         },

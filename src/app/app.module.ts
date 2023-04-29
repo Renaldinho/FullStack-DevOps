@@ -21,6 +21,8 @@ import { ButtonComponent } from './components/generic/button/button.component';
 import { UserSettingsProfileDisplayComponent } from './components/blocks/user-settings-profile-display/user-settings-profile-display.component';
 import { ServiceManagementComponent } from './components/Pages/service-management/service-management.component';
 import { ServiceComponent } from './components/blocks/service/service.component';
+import { AccountSettingsComponent } from './components/Pages/account-settings/account-settings.component';
+import { SecuritySettingsComponent } from './components/Pages/security-settings/security-settings.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ServiceComponent } from './components/blocks/service/service.component'
     ButtonComponent,
     UserSettingsProfileDisplayComponent,
     ServiceManagementComponent,
-    ServiceComponent
+    ServiceComponent,
+    AccountSettingsComponent,
+    SecuritySettingsComponent
   ],
   imports: [
     BrowserModule,
