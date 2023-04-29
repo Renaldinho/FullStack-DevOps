@@ -1,0 +1,9 @@
+<div class="w-full h-full bg-light-background grid grid-cols-3 grid-rows-2 gap-3">
+  <app-service *ngFor="let service of services" [serviceName]="service.name" ></app-service>
+  <!--Create service card-->
+  <div class="w-full h-full box-border flex flex-col justify-center items-center">
+    <div class="bg-light-accent text-5xl hover:text-7xl text-white w-24 h-24 hover:w-32 hover:h-32 transition-all duration-500 ease-out rounded-full flex flex-col justify-center items-center">
+      <i class=" fa-solid fa-plus"></i>
+    </div>
+  </div>
+</div>

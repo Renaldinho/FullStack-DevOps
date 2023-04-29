@@ -19,6 +19,8 @@ import { UserSettingsOptionsComponent } from './components/blocks/user-settings-
 import { UserSettingsComponent } from './components/blocks/user-settings/user-settings.component';
 import { ButtonComponent } from './components/generic/button/button.component';
 import { UserSettingsProfileDisplayComponent } from './components/blocks/user-settings-profile-display/user-settings-profile-display.component';
+import { ServiceManagementComponent } from './components/Pages/service-management/service-management.component';
+import { ServiceComponent } from './components/blocks/service/service.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { UserSettingsProfileDisplayComponent } from './components/blocks/user-se
     UserSettingsOptionsComponent,
     UserSettingsComponent,
     ButtonComponent,
-    UserSettingsProfileDisplayComponent
+    UserSettingsProfileDisplayComponent,
+    ServiceManagementComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

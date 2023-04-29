@@ -27,6 +27,7 @@ export class UserSettingsOptionsComponent {
       else
         buttonInstance.isSelected = true;
     })
+    this.showContent.emit(option.id)
   }
 }
 

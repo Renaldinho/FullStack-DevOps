@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class UserProfileComponent {
 
+  selectedContentId: any = 1;
+
+
+  changeSettingsContent($event: number) {
+    this.selectedContentId = $event
+    console.log($event);
+  }
 }

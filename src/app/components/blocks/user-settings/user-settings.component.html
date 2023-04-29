@@ -1,2 +1,8 @@
-<div class="box-border h-full flex flex-col w-full rounded-xl p-2 bg-light-shade">#
+<div class="box-border flex flex-col justify-center items-center h-full w-full rounded-xl p-6 bg-light-background border-2 border-light-accent border-solid"
+  [ngSwitch]="selectedContent">
+  <app-service-management class="w-full h-full" *ngSwitchCase="1"></app-service-management>
+  <div *ngSwitchCase="2">2</div>
+  <div *ngSwitchCase="3">3</div>
+  <div *ngSwitchCase="4">4</div>
+
 </div>

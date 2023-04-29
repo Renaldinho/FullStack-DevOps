@@ -1,5 +1,5 @@
-<div class="mx-3 h-full flex justify-center items-center border-b-2 border-x-0 border-t-0 font-black text-light-text"
-  [ngClass]="[isSelected ? 'border-light-accent-secondary border-solid' : 'hover:border-solid dark:hover:border-dark-accent hover:border-light-accent-secondary']"
+<div class="cursor-pointer mx-3 h-full flex justify-center items-center border-b-2 border-x-0 border-t-0 font-black text-light-text
+  isSelected ? 'border-light-accent-secondary border-solid' : 'hover:border-solid dark:hover:border-dark-accent hover:border-light-accent-secondary'"
   (click)="onClick()">
   {{displayValue}}
 </div>

@@ -31,6 +31,10 @@ module.exports = {
         brand: {
           'main': '#148cbc'
         }
+      },
+      transitionProperty: {
+        outlines: "width, height",
+        everything: "font-size, width, height"
       }
     },
   },
