@@ -19,9 +19,9 @@
       <!--Sign in-->
       <div *ngIf="!login" class="flex flex-col justify-center items-center">
         <form>
-          <app-input-field #EmailInput  labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
-          <app-input-field #PasswordInput labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
-          <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN IN</button>
+          <app-input-field #EmailInput id="emailInput"  labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
+          <app-input-field #PasswordInput id="passwordInput" labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
+          <button id="signInBtn" (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN IN</button>
         </form>
 
         <hr class="w-full">

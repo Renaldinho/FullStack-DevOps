@@ -5,6 +5,7 @@
     </div>
   </div>
   <app-nav-button *ngFor="let button of pathValues"
+    [id]="button.id"
     (click)="onButtonSelect(button)"
     [displayValue]="button.value"
     [buttonId]="button.id"
