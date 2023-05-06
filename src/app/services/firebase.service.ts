@@ -13,6 +13,8 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
+import {Router} from "@angular/router";
+import {RoutingPaths} from "../interfaces/common-interfaces.service";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +41,7 @@ export class FirebaseService {
 
 
 
-  constructor() {
+  constructor(private router: Router) {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
@@ -57,11 +59,23 @@ export class FirebaseService {
   private initAuth() {
     this.auth.onAuthStateChanged( (user) => {
       if (user){
-        this.getUserProfilePic();
+        this.handleSignIn();
+
       }
       else
-        this.resetUserData();
+        this.handleSignOut();
     })
+  }
+
+  private handleSignIn() {
+    this.getUserProfilePic();
+    this.router.navigate([RoutingPaths.HOME])
+  }
+
+
+  private handleSignOut() {
+    this.resetUserData();
+    this.router.navigate([RoutingPaths.SIGN_IN])
   }
 
   async getUserProfilePic() {

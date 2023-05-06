@@ -31,7 +31,7 @@
       <div *ngIf="login" class="flex flex-col justify-center items-center">
         <app-input-field #EmailInput  labelText="Email" inputType="email" iconSrc="fa-solid fa-envelope"></app-input-field>
         <app-input-field #PasswordInput labelText="Password" inputType="password" iconSrc="fa-solid fa-lock"></app-input-field>
-        <button (click)="signIn()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN UP</button>
+        <button (click)="signUp()" class="p-2.5 font-black font-Montserrat text-white bg-light-accent w-full border-none">SIGN UP</button>
 
         <hr class="w-full">
         <app-auth-options></app-auth-options>

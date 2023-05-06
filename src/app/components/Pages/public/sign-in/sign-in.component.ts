@@ -25,6 +25,12 @@ export class SignInComponent {
     this.authService.signIn(email,password);
   }
 
+  signUp() {
+    const email = this.emailInput?.inputValue;
+    const password = this.passwordInput?.inputValue;
+    this.register(email,password);
+  }
+
   register(email: any, password: any) {
     this.authService.register(email,password);
   }
