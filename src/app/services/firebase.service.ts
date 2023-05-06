@@ -143,6 +143,7 @@ export class FirebaseService {
     var userData: User = {
       uid: userCredentials.user?.uid,
       email: userCredentials.user?.email,
+      address: '', firstName: '', lastName: '', phone: '',username: ''
     }
     this.firestore.collection(this.userCollectionPath)
       .doc(userCredentials.user?.uid)
@@ -173,10 +174,17 @@ export class FirebaseService {
     this.firestore
       .collection(this.userCollectionPath)
       .doc(this.auth.currentUser?.uid)
-      .get().then((documentSnapshot) => {
+      .onSnapshot((documentSnapshot) => {
     this.userDataStore.setUserData(documentSnapshot.data())
-    })
+    });
 
     this.getUserProfilePic().catch((error) => console.log(error));
+  }
+
+  updateUserData(user: any) {
+    this.firestore
+      .collection(this.userCollectionPath)
+      .doc(user.uid)
+      .set(user);
   }
 }

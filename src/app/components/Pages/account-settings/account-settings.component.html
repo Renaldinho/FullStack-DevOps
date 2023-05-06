@@ -1,22 +1,22 @@
 <div class="flex w-full space-y-24 h-full flex-col items-start">
   <div class="w-full h-full space-x-10 flex flex-row justify-center items-center">
-    <app-input-field class="w-full" labelText="First name" iconSrc="fa-solid fa-signature"></app-input-field>
-    <app-input-field class="w-full" labelText="Last name" iconSrc="fa-solid fa-signature"></app-input-field>
-    <app-input-field class="w-full" labelText="Username" iconSrc="fa-solid fa-signature"></app-input-field>
+    <app-input-field [(value)]="user.firstName" class="w-full" labelText="First name" iconSrc="fa-solid fa-signature"></app-input-field>
+    <app-input-field [(value)]="user.lastName" class="w-full" labelText="Last name" iconSrc="fa-solid fa-signature"></app-input-field>
+    <app-input-field [(value)]="user.username" class="w-full" labelText="Username" iconSrc="fa-solid fa-signature"></app-input-field>
   </div>
 
   <div class="w-full space-x-10 h-fit flex flex-row justify-center items-center">
-    <app-input-field class="w-full" labelText="Address" iconSrc="fa-solid fa-location-dot"></app-input-field>
+    <app-input-field [(value)]="user.address" class="w-full" labelText="Address" iconSrc="fa-solid fa-location-dot"></app-input-field>
   </div>
 
   <div class="w-full space-x-10 h-fit flex flex-row justify-center items-center">
-    <app-input-field class="w-full" labelText="Contact number" iconSrc="fa-solid fa-phone"></app-input-field>
+    <app-input-field [(value)]="user.phone" class="w-full" labelText="Contact number" iconSrc="fa-solid fa-phone"></app-input-field>
     <app-input-field [(value)]="user.email"  class="w-full" labelText="Contact e-mail" iconSrc="fa-solid fa-envelope"></app-input-field>
   </div>
 
   <div class="w-full h-fit flex flex-row justify-end space-x-3 items-center">
-    <app-button buttonValue="Reset" (click)="resetData()"></app-button>
-    <app-button buttonValue="Save" (click)="saveData()"></app-button>
+    <app-button [isSelected]="true" buttonValue="Reset" (click)="resetData()"></app-button>
+    <app-button [isSelected]="true" buttonValue="Save" (click)="saveData()"></app-button>
   </div>
 
 </div>

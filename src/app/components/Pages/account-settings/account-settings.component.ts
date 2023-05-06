@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserDataStore} from "../../../stores/user-data.store";
+import {FirebaseService} from "../../../services/firebase.service";
 
 @Component({
   selector: 'app-account-settings',
@@ -9,19 +10,16 @@ import {UserDataStore} from "../../../stores/user-data.store";
 export class AccountSettingsComponent implements OnInit{
 
   user: any
-  tempUser: any
 
-  constructor(private userDataStore: UserDataStore) {
+  constructor(private userDataStore: UserDataStore,private firebaseService: FirebaseService) {
   }
-
-
 
   resetData() {
     this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserData()));
   }
 
   saveData() {
-
+    this.firebaseService.updateUserData(this.user);
   }
 
   ngOnInit(): void {

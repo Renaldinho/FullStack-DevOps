@@ -9,6 +9,6 @@ export class ButtonComponent {
 
   @Input() buttonValue: string | undefined
   @Input() buttonId: number | undefined
+  @Input() isSelected: boolean = false;
 
-  isSelected: boolean = false;
 }
