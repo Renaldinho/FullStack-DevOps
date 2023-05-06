@@ -60,7 +60,6 @@ export class FirebaseService {
     this.auth.onAuthStateChanged( (user) => {
       if (user){
         this.handleSignIn();
-
       }
       else
         this.handleSignOut();
@@ -68,7 +67,7 @@ export class FirebaseService {
   }
 
   private handleSignIn() {
-    this.getUserProfilePic();
+    this.getUserData();
     this.router.navigate([RoutingPaths.HOME])
   }
 
@@ -82,7 +81,7 @@ export class FirebaseService {
     this.currentUserAvatarURL = await this.storage
       .ref(this.userAvatarPath)
       .child(this.auth.currentUser?.uid+"")
-      .getDownloadURL();
+      .getDownloadURL()
   }
 
   async updateUserImage($event){
@@ -167,5 +166,9 @@ export class FirebaseService {
         this.persistUser(userCredentials)
       })
       .catch((error) => console.log(error));
+  }
+
+  private getUserData() {
+    this.getUserProfilePic().catch((error) => console.log(error));
   }
 }
