@@ -8,7 +8,7 @@ import {SignInComponent} from "./components/Pages/public/sign-in/sign-in.compone
 import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
-  {path: RoutingPaths.HOME, component: HomeComponent, canActivate: [AuthGuard] },
+  {path: RoutingPaths.HOME, component: HomeComponent, canActivate: [AuthGuard]},
   {path: RoutingPaths.USER_PROFILE, component: UserProfileComponent,canActivate: [AuthGuard] },
   {path: RoutingPaths.SIGN_IN,component: SignInComponent},
   {path: RoutingPaths.PAGE_NOT_FOUND, component: PageNotFoundComponent }

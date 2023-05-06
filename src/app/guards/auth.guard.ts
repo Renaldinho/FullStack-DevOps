@@ -15,17 +15,25 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return new Observable<boolean>((observer) => {
-      const user = this.firebaseService.auth.currentUser
+      const currentUser = this.firebaseService.auth.currentUser
+      console.log(currentUser)
+        if (currentUser) {
+          // If the user is authenticated, allow navigation
+          observer.next(true);
+          observer.complete();
+          return;
+        }
+      this.firebaseService.auth.onAuthStateChanged((user) => {
         if (user) {
           // If the user is authenticated, allow navigation
           observer.next(true);
         } else {
           // If the user is not authenticated, redirect to the login page
-          this.router.navigate([RoutingPaths.SIGN_IN]);
           observer.next(false);
+          this.router.navigate([RoutingPaths.SIGN_IN])
         }
         observer.complete();
-
+      });
     });
   }
 }

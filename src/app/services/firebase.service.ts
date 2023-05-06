@@ -78,20 +78,13 @@ export class FirebaseService {
     this.router.navigate([RoutingPaths.SIGN_IN])
   }
 
-  async getUserProfilePic() {
-    this.currentUserAvatarURL = await this.storage
-      .ref(this.userAvatarPath)
-      .child(this.auth.currentUser?.uid+"")
-      .getDownloadURL()
-  }
-
   async updateUserImage($event){
     const img = $event.target.files[0];
     const uploadTask = await this.storage
       .ref(this.userAvatarPath)
       .child(this.auth.currentUser?.uid+"")
       .put(img);
-    this.currentUserAvatarURL = await uploadTask.ref.getDownloadURL()
+    this.loadUserData()
   }
 
 
@@ -171,6 +164,7 @@ export class FirebaseService {
   }
 
   private loadUserData() {
+    //Load written data
     this.firestore
       .collection(this.userCollectionPath)
       .doc(this.auth.currentUser?.uid)
@@ -178,10 +172,18 @@ export class FirebaseService {
     this.userDataStore.setUserData(documentSnapshot.data())
     });
 
-    this.getUserProfilePic().catch((error) => console.log(error));
+    //Load image data
+    this.storage
+      .ref(this.userAvatarPath)
+      .child(this.auth.currentUser?.uid+"")
+      .getDownloadURL().then((imageUrl) => {
+        this.userDataStore.setAvatarImageUrl(imageUrl);
+      }).catch((error) => console.log(error))
+
   }
 
   updateUserData(user: any) {
+    //Update written data
     this.firestore
       .collection(this.userCollectionPath)
       .doc(user.uid)

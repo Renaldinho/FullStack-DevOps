@@ -15,7 +15,7 @@ export class AccountSettingsComponent implements OnInit{
   }
 
   resetData() {
-    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserData()));
+    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserInputData()));
   }
 
   saveData() {
@@ -23,6 +23,6 @@ export class AccountSettingsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserData()));
+    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserInputData()));
   }
 }
