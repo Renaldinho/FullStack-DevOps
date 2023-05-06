@@ -4,9 +4,10 @@
     <i class="text-black" *ngIf="iconSrc" [class]="iconSrc"></i>
     <input #InputField
            class="bg-light-input-field-bg"
-           [type]="inputType" [(ngModel)]="inputValue"
+           [type]="inputType" [ngModel]="value"
            (focus)="onFocus()"
            (blur)="onBlur()"
+           (input)="onInput($event)"
     />
   </div>
 </div>

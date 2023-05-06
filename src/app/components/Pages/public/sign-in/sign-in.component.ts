@@ -20,14 +20,14 @@ export class SignInComponent {
   }
 
   signIn() {
-    const email = this.emailInput?.inputValue;
-    const password = this.passwordInput?.inputValue;
+    const email = this.emailInput?.value;
+    const password = this.passwordInput?.value;
     this.authService.signIn(email,password);
   }
 
   signUp() {
-    const email = this.emailInput?.inputValue;
-    const password = this.passwordInput?.inputValue;
+    const email = this.emailInput?.value;
+    const password = this.passwordInput?.value;
     this.register(email,password);
   }
 

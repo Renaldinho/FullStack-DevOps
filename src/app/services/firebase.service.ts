@@ -15,6 +15,7 @@ import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
 import {Router} from "@angular/router";
 import {RoutingPaths} from "../interfaces/common-interfaces.service";
+import {UserDataStore} from "../stores/user-data.store";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class FirebaseService {
 
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private userDataStore: UserDataStore) {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
@@ -67,7 +68,7 @@ export class FirebaseService {
   }
 
   private handleSignIn() {
-    this.getUserData();
+    this.loadUserData();
     this.router.navigate([RoutingPaths.HOME])
   }
 
@@ -168,7 +169,14 @@ export class FirebaseService {
       .catch((error) => console.log(error));
   }
 
-  private getUserData() {
+  private loadUserData() {
+    this.firestore
+      .collection(this.userCollectionPath)
+      .doc(this.auth.currentUser?.uid)
+      .get().then((documentSnapshot) => {
+    this.userDataStore.setUserData(documentSnapshot.data())
+    })
+
     this.getUserProfilePic().catch((error) => console.log(error));
   }
 }

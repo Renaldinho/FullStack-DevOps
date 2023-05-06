@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-input-field',
@@ -12,9 +12,16 @@ export class InputFieldComponent {
   @Input() labelText: string | undefined;
   @Input() inputType: string = 'text';
   @Input() iconSrc: string | undefined;
+  @Input() value: string = '';
+  @Output() valueChange = new EventEmitter<string>();
 
-  inputValue: string | undefined;
   isFocused: boolean = false;
+
+  onInput($event): void {
+    console.log($event.target.value)
+    this.value = $event.target.value;
+    this.valueChange.emit(this.value);
+  }
 
   onFocus() {
     this.isFocused = true;
