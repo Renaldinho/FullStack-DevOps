@@ -12,6 +12,5 @@ export class UserProfileComponent {
 
   changeSettingsContent($event: number) {
     this.selectedContentId = $event
-    console.log($event);
   }
 }
