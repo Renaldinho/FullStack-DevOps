@@ -1,18 +1,7 @@
-<div class="w-full h-full"
-     *ngIf="firebaseService.auth.currentUser==null">
-  <app-sign-in></app-sign-in>
-</div>
-
-
 
 <div *ngIf="firebaseService.auth.currentUser">
   <p>{{firebaseService.auth.currentUser.uid}}</p>
   <input [(ngModel)]="hobby">
   <button (click)="addHobby(hobby)">Add hobby</button>
   <button (click)="signOut()">Sign out</button>
-
-
-
-
-
 </div>
