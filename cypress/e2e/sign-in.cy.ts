@@ -1,5 +1,5 @@
 describe('Route test unsigned', () => {
-  it('Visits the initial project page', () => {
+  it('Routing guard works', () => {
     cy.visit('http://localhost:4200');
 
     // Replace 'your-button-selector' with the appropriate selector for the button you want to click
@@ -21,7 +21,8 @@ describe('Sign in test fixed', () => {
     cy.get('#passwordInput').type(password);
     cy.get('#signInBtn').click();
 
+
     // Replace '/expected-route' with the route you expect to navigate to after clicking the button
-    cy.contains('ZBkDvc5z4nfU2K5rzSOKjgm5i8T2').should('be.visible')
+    cy.url().should('include', '/home');
   })
 })
