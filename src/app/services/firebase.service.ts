@@ -12,10 +12,10 @@ import {RoutingPaths} from "../interfaces/common-interfaces.service";
 import {UserDataStore} from "../stores/user-data.store";
 import {NotificationService} from "./notification.service";
 import {NotificationType} from "angular2-notifications";
+import {ErrorManagerService} from "./error-manager.service";
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
-import {ErrorManagerService} from "./error-manager.service";
 
 @Injectable({
   providedIn: 'root'
@@ -89,7 +89,10 @@ export class FirebaseService {
 
 
   public signIn(email: any, password: any) {
-    this.auth.signInWithEmailAndPassword(email,password);
+    this.auth.signInWithEmailAndPassword(email,password)
+      .then((userCredentials) => {
+        this.handleSuccess();
+      });
   }
 
   public signOut(){
@@ -184,5 +187,9 @@ export class FirebaseService {
       .collection(this.userCollectionPath)
       .doc(user.uid)
       .set(user);
+  }
+
+  private handleSuccess() {
+    this.notifService.createMessage(NotificationType.Success,'',"Success")
   }
 }
