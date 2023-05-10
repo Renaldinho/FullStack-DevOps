@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,7 @@ import { ServiceComponent } from './components/blocks/service/service.component'
 import { AccountSettingsComponent } from './components/Pages/account-settings/account-settings.component';
 import { SecuritySettingsComponent } from './components/Pages/security-settings/security-settings.component';
 import {SimpleNotificationsModule} from "angular2-notifications";
+import {ErrorManagerService} from "./services/error-manager.service";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import {SimpleNotificationsModule} from "angular2-notifications";
     BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: ErrorHandler,
+    useClass: ErrorManagerService
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

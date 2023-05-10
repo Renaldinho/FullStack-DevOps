@@ -18,7 +18,6 @@ export class InputFieldComponent {
   isFocused: boolean = false;
 
   onInput($event): void {
-    console.log($event.target.value)
     this.value = $event.target.value;
     this.valueChange.emit(this.value);
   }

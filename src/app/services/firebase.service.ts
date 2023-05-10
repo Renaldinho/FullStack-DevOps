@@ -15,6 +15,7 @@ import {NotificationType} from "angular2-notifications";
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
+import {ErrorManagerService} from "./error-manager.service";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class FirebaseService {
 
 
 
-  constructor(private router: Router, private userDataStore: UserDataStore, private notifService: NotificationService) {
+  constructor(private router: Router, private userDataStore: UserDataStore,private errorManager:ErrorManagerService, private notifService: NotificationService) {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
@@ -88,15 +89,7 @@ export class FirebaseService {
 
 
   public signIn(email: any, password: any) {
-    this.auth.signInWithEmailAndPassword(email,password)
-      .catch((error) =>
-      {
-        this.sendErrorNotification(error);
-      });
-  }
-
-  private sendErrorNotification(error: any) {
-    this.notifService.createMessage(NotificationType.Error,error,"Error")
+    this.auth.signInWithEmailAndPassword(email,password);
   }
 
   public signOut(){
