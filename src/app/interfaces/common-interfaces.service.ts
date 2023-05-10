@@ -7,3 +7,11 @@ export enum RoutingPaths {
   SIGN_IN = 'sign-in'
 }
 
+export enum NotificationTypes {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  ALERT = 'alert',
+  WARN = 'warn',
+  INFO = 'info'
+}
+

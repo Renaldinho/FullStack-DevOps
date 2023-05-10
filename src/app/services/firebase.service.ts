@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth';
@@ -6,16 +6,15 @@ import 'firebase/compat/storage'
 
 import {DefaultUserData} from "../interfaces/default-user-data";
 import * as config from '../../../firebaseconfig.js'
-import firestore = firebase.firestore;
 import {User} from "../interfaces/User";
-import {addWarning} from "@angular-devkit/build-angular/src/utils/webpack-diagnostics";
-import {error} from "@angular/compiler-cli/src/transformers/util";
-import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
-import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
-import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
 import {Router} from "@angular/router";
 import {RoutingPaths} from "../interfaces/common-interfaces.service";
 import {UserDataStore} from "../stores/user-data.store";
+import {NotificationService} from "./notification.service";
+import {NotificationType} from "angular2-notifications";
+import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
+import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
+import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +41,7 @@ export class FirebaseService {
 
 
 
-  constructor(private router: Router, private userDataStore: UserDataStore) {
+  constructor(private router: Router, private userDataStore: UserDataStore, private notifService: NotificationService) {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
@@ -92,8 +91,12 @@ export class FirebaseService {
     this.auth.signInWithEmailAndPassword(email,password)
       .catch((error) =>
       {
-      console.log(error)
+        this.sendErrorNotification(error);
       });
+  }
+
+  private sendErrorNotification(error: any) {
+    this.notifService.createMessage(NotificationType.Error,error,"Error")
   }
 
   public signOut(){

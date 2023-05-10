@@ -23,6 +23,7 @@ import { ServiceManagementComponent } from './components/Pages/service-managemen
 import { ServiceComponent } from './components/blocks/service/service.component';
 import { AccountSettingsComponent } from './components/Pages/account-settings/account-settings.component';
 import { SecuritySettingsComponent } from './components/Pages/security-settings/security-settings.component';
+import {SimpleNotificationsModule} from "angular2-notifications";
 
 @NgModule({
   declarations: [
@@ -44,14 +45,15 @@ import { SecuritySettingsComponent } from './components/Pages/security-settings/
     ServiceManagementComponent,
     ServiceComponent,
     AccountSettingsComponent,
-    SecuritySettingsComponent
+    SecuritySettingsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
