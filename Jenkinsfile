@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                sh 'ng serve'
+                sh 'ng build'
             }
         }
         stage('Cypress Tests') {
