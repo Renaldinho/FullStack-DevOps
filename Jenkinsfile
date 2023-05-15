@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('Docker-Token')
+    }
+
     tools {
         nodejs 'node-20'
     }
@@ -16,11 +20,17 @@ pipeline {
                 sh 'ng build'
             }
         }
-        stage('Cypress Tests') {
+        stage('Build Docker Image') {
             steps {
-                sh 'npx cypress run --headless'
+                sh 'docker build -t renaldinho/project:tag .'
             }
         }
-
+        stage('Push Docker Image') {
+            steps {
+                    sh "docker login -u renaldinho -p $DOCKERHUB_CREDENTIALS"
+                    sh "docker push renaldinho/project:tag"
+                }
+            }
+        }
     }
 }
