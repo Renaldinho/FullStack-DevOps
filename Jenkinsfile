@@ -10,17 +10,16 @@ pipeline {
                 sh 'npm install --force'
             }
         }
-
+        stage('Run Application') {
+            steps {
+                sh 'ng serve'
+            }
+        }
         stage('Cypress Tests') {
             steps {
                 sh 'npx cypress run'
             }
         }
 
-        stage('Run Application') {
-            steps {
-                sh 'ng serve'
-            }
-        }
     }
 }
