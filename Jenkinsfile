@@ -8,6 +8,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install --force'
+                sh 'npm install -g @angular/cli --force'
             }
         }
         stage('Run Application') {
