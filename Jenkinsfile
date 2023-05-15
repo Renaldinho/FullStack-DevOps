@@ -29,7 +29,7 @@ pipeline {
             steps {
                     sh "docker login -u renaldinho -p $DOCKERHUB_CREDENTIALS"
                     sh "docker push renaldinho/project:tag"
-                }
+
             }
         }
     }
