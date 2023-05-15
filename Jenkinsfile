@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('Docker-Token')
+        DOCKERHUB_CREDENTIALS = credentials('Docker-Token')
     }
 
     tools {
         nodejs 'node-20'
     }
+
     stages {
         stage('Install Dependencies') {
             steps {
@@ -22,14 +23,13 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t renaldinho/project .'
-            }
-        }
-        stage('Push Docker Image') {
-            steps {
-                    sh "docker login -u renaldinho -p $DOCKERHUB_CREDENTIALS"
-                    sh "docker push renaldinho/project"
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'Docker-Token') {
+                        def customImage = docker.build("renaldinho/project")
 
+                        customImage.push()
+                    }
+                }
             }
         }
     }
