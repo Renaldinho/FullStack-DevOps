@@ -22,13 +22,13 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t renaldinho/project:tag .'
+                sh 'docker build -t renaldinho/project .'
             }
         }
         stage('Push Docker Image') {
             steps {
                     sh "docker login -u renaldinho -p $DOCKERHUB_CREDENTIALS"
-                    sh "docker push renaldinho/project:tag"
+                    sh "docker push renaldinho/project"
 
             }
         }
