@@ -1,58 +1,29 @@
 pipeline {
-  agent {
-    docker {
-      image 'docker:latest'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-  }
+    agent any
 
-  environment {
-    DOCKER_COMPOSE_VERSION = '1.29.2'
-    APP_NAME = 'my-angular-app'
-  }
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Renaldinho/FullStack-DevOps'
+            }
+        }
 
-  stages {
-    stage('Build') {
-      steps {
-        sh 'npm install'
-        sh 'npm run build'
-        sh 'docker build -t my-angular-app .'
-      }
-    }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
 
-    stage('Deploy to test') {
-      when {
-        branch 'main'
-      }
-      steps {
-        sh 'docker-compose -f docker-compose.test.yml up -d'
-      }
-    }
+        stage('Cypress Tests') {
+            steps {
+                sh 'npx cypress run'
+            }
+        }
 
-    stage('Test') {
-      when {
-        branch 'main'
-      }
-      steps {
-        sh 'docker-compose -f docker-compose.test.yml exec -T testcafe npm install'
-        sh 'docker-compose -f docker-compose.test.yml exec -T testcafe npm run testcafe'
-      }
+        stage('Run Application') {
+            steps {
+                sh 'ng serve'
+            }
+        }
     }
-
-    stage('Deploy to production') {
-      when {
-        branch 'main'
-      }
-      steps {
-        sh 'docker-compose -f docker-compose.prod.yml up -d'
-      }
-    }
-  }
-
-  post {
-    always {
-      sh 'docker-compose -f docker-compose.test.yml down'
-      sh 'docker-compose -f docker-compose.prod.yml down'
-    }
-  }
 }
