@@ -23,11 +23,12 @@ pipeline {
         }
 
         stage('Tests') {
-                    steps {
-                        sh 'npx cypress run'
-                        sh 'npx cypress run --headless'
-                    }
+            steps {
+                xvfb('default Xvfb') {
+                    sh 'npm run cypress:run'
                 }
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
