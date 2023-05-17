@@ -24,9 +24,9 @@ pipeline {
 
         stage('Tests') {
             steps {
-                xvfb('Xvfb') {
-                    sh 'npm run cypress:run'
-                }
+                wrap([$class: 'Xvfb']) {
+                            sh 'npm run cypress:run'
+                        }
             }
         }
         stage('Build Docker Image') {
