@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh 'npm install --force'
                 sh 'npm install -g @angular/cli --force'
-                sh 'npm install mocha-junit-reporter --save-dev --legacy-peer-deps'
+                sh 'npm install --save-dev cypress mochawesome mochawesome-merge mochawesome-report-generator'
             }
         }
         stage('Run Application') {
@@ -31,6 +31,12 @@ pipeline {
                 junit 'result.xml'
             }
         }
+        stage('Generate Report') {
+             steps {
+                 sh 'npx mochawesome-merge cypress/reports/mocha/*.json > mochawesome.json'
+                 sh 'npx marge mochawesome.json'
+             }
+       }
         stage('Build Docker Image') {
             steps {
                 script {
