@@ -21,6 +21,13 @@ pipeline {
                 sh 'ng build'
             }
         }
+
+        stage('Tests') {
+                    steps {
+                        sh 'npx cypress run'
+                        sh 'npx cypress run --headless'
+                    }
+                }
         stage('Build Docker Image') {
             steps {
                 script {
