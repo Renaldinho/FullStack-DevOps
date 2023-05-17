@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh 'npm install --force'
                 sh 'npm install -g @angular/cli --force'
+                sh 'npm install mocha-junit-reporter --save-dev'
             }
         }
         stage('Run Application') {
@@ -25,8 +26,9 @@ pipeline {
         stage('Tests') {
             steps {
                 wrap([$class: 'Xvfb']) {
-                            sh 'npm run cypress:run'
-                        }
+                    sh 'npm run cypress:run -- --reporter mocha-junit-reporter --reporter-options mochaFile=result.xml'
+                }
+                junit 'result.xml'
             }
         }
         stage('Build Docker Image') {
