@@ -24,7 +24,7 @@ pipeline {
 
         stage('Tests') {
             steps {
-                xvfb('default Xvfb') {
+                xvfb('Xvfb') {
                     sh 'npm run cypress:run'
                 }
             }
