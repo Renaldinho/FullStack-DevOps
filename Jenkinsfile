@@ -41,5 +41,18 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Heroku') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'herokuCredentials', passwordVariable: 'HEROKU_API_KEY', usernameVariable: 'HEROKU_USERNAME')]) {
+                        sh "docker pull renaldinho/project:latest"
+                        sh "heroku container:login"
+                        sh "docker tag renaldinho/project:latest registry.heroku.com/devops-exam-project/web"
+                        sh "docker push registry.heroku.com/devops-exam-project/web"
+                        sh "heroku container:release web --app devops-exam-project"
+                    }
+                }
+            }
+        }
     }
 }
