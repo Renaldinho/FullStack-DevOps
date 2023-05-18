@@ -1,7 +1,7 @@
 FROM node:18.0 as node
 WORKDIR /src
 COPY . .
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 RUN npm run build --prod
 
 
