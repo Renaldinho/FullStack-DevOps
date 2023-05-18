@@ -1,4 +1,4 @@
-FROM node:18.1 as node
+FROM node:18.10 as node
 WORKDIR /src
 COPY . .
 RUN npm ci --legacy-peer-deps
