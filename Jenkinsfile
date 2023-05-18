@@ -34,7 +34,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com',DOCKERHUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com','access-token') {
                         def customImage = docker.build("renaldinho/project")
                         customImage.push()
                     }
