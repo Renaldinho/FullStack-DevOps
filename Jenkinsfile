@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com','access-token') {
-                        def customImage = docker.build("renaldinho/project")
+                        def customImage = docker.build("renaldinho/project", "-f docker/production/Dockerfile .")
                         customImage.push()
                     }
                 }
