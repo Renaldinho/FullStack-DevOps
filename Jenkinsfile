@@ -47,7 +47,7 @@ pipeline {
         stage('Delete Docker Images') {
             steps {
                 script {
-                    sh "docker rmi $(docker images -q)"
+                    sh 'docker rmi $(docker images -q)'.replaceAll('$', '\$')
                 }
             }
         }
@@ -55,7 +55,7 @@ pipeline {
 
         stage('Build production Image') {
             steps {
-                script {
+                script {z`
                     docker.withRegistry('https://registry.hub.docker.com','access-token') {
                         def customImage = docker.build("renaldinho/project", "-f docker/production/Dockerfile .")
                         customImage.push()
