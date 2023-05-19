@@ -55,7 +55,7 @@ pipeline {
 
         stage('Build production Image') {
             steps {
-                script {z`
+                script {
                     docker.withRegistry('https://registry.hub.docker.com','access-token') {
                         def customImage = docker.build("renaldinho/project", "-f docker/production/Dockerfile .")
                         customImage.push()
