@@ -33,6 +33,25 @@ pipeline {
                     }
                 }
 
+        stage('Docker Compose') {
+                steps {
+                    sh 'docker-compose up --abort-on-container-exit'
+                }
+                post {
+                    always {
+                        sh 'docker-compose down'
+                    }
+                }
+            }
+
+        stage('Delete Docker Images') {
+            steps {
+                script {
+                    sh "docker rmi $(docker images -q)"
+                }
+            }
+        }
+
 
         stage('Build production Image') {
             steps {
