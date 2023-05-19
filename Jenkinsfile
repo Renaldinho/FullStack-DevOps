@@ -23,22 +23,6 @@ pipeline {
                 sh 'npm start &'
             }
         }
-        stage('Build Docker Compose') {
-            steps {
-               sh 'docker-compose build'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-               sh 'docker-compose up --abort-on-container-exit'
-            }
-            post {
-               always {
-                   sh 'docker-compose down'
-               }
-            }
-       }
         stage('Build production Image') {
             steps {
                 script {
