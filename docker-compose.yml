@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/production/Dockerfile
+    ports:
+      - 8080:80
+  cypress:
+    build:
+      context: .
+      dockerfile: docker/test/Dockerfile
+    depends_on:
+      - app

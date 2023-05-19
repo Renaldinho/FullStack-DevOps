@@ -22,16 +22,23 @@ pipeline {
                 sh 'npm start &'
             }
         }
-
-        stage('Tests') {
+        stage('Build Docker Compose') {
             steps {
-                wrap([$class: 'Xvfb']) {
-                    sh 'npm run cypress:run -- --reporter mocha-junit-reporter --reporter-options mochaFile=result.xml'
-                }
-                junit 'result.xml'
+               sh 'docker-compose build'
             }
         }
-        stage('Build Docker Image') {
+
+        stage('Run Tests') {
+            steps {
+               sh 'docker-compose up --abort-on-container-exit'
+            }
+            post {
+               always {
+                   sh 'docker-compose down'
+               }
+            }
+       }
+        stage('Build production Image') {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com','access-token') {
