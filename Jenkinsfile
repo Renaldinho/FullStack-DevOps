@@ -23,6 +23,18 @@ pipeline {
                 sh 'npm start &'
             }
         }
+
+        stage('Tests') {
+            steps {
+                wrap([$class: 'Xvfb']) {
+                            sh 'npm run cypress:run'
+                        }
+                    sh 'npm run cypress:run -- --reporter mocha-junit-reporter --reporter-options mochaFile=result.xml'
+                }
+                junit 'result.xml'
+        }
+
+
         stage('Build production Image') {
             steps {
                 script {
