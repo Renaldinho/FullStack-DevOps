@@ -6,4 +6,4 @@ services:
       dockerfile: docker/production/Dockerfile
     ports:
       - 8080:80
-  
+
