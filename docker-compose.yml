@@ -13,6 +13,6 @@ services:
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: sh -c "npx cypress cache clear && cypress open --config-file cypress.config.ts"
+    command: sh -c "./run-tests-config.sh"
     depends_on:
       - app
