@@ -1,20 +1,14 @@
-<div class="w-full h-full flex flex-col items-center">
-  <div class="w-full h-fit flex flex-col items-center mb-12">
-    <header class="text-3xl uppercase">Service Listings</header>
-    <div class="w-full flex flex-row justify-center items-center">
-      <hr class="w-1/12 mr-2 border-t-4 border-light-accent">
-      <i class="text-light-accent fa-solid fa-gear"></i>
-      <hr class="w-1/12 ml-2 border-t-4 border-light-accent">
-    </div>
+<div class="wrapper w-full h-full">
+  <div class="left-area  h-full flex justify-center items-center p-4 box-border">
+    <img src="https://friconix.com/png/fi-cnluxl-anonymous-user-circle.png" class="w-full rounded-lg">
   </div>
-  <!--Service grid-->
-  <div class="w-full h-full bg-light-background grid grid-cols-3 grid-rows-2 gap-3">
-    <app-service *ngFor="let service of services" [serviceName]="service.name" ></app-service>
-    <!--Create service card-->
-    <div class="w-full h-full box-border flex flex-col justify-center items-center">
-      <div class="bg-light-accent text-5xl hover:text-7xl text-white w-24 h-24 hover:w-32 hover:h-32 transition-all duration-500 ease-out rounded-full flex flex-col justify-center items-center">
-        <i class=" fa-solid fa-plus"></i>
-      </div>
+  <div class="right-area flex flex-col w-full h-full box-border p-4 justify-end space-y-2">
+    <app-input-field labelText="Name" iconSrc="fa-sharp fa-solid fa-building" ></app-input-field>
+    <app-input-field labelText="Career" iconSrc="fa-solid fa-school"></app-input-field>
+    <app-input-box labelText="Description" class="flex flex-col h-64"></app-input-box>
+    <div class="flex flex-row justify-end items-start pt-12 space-x-4">
+      <app-input-field labelText="Pricing" inputType="number" iconSrc="fa-solid fa-money-bills" class="w-full "></app-input-field>
+      <app-button buttonValue="Save"></app-button>
     </div>
   </div>
 </div>

@@ -1,0 +1,13 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: 'left right';
+  grid-template-columns: 40% 1fr;
+}
+
+.right-area{
+  grid-area: right;
+}
+
+left-area{
+  grid-area: left;
+}

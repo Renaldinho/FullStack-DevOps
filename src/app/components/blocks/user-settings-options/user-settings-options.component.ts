@@ -13,8 +13,8 @@ export class UserSettingsOptionsComponent {
   @ViewChildren(ButtonComponent) navButtons: QueryList<ButtonComponent> | undefined;
 
   options: contentOptions[] = [
-    { id:1, value:"SERVICES"},
-    { id:2, value:"ACCOUNT"},
+    { id:1, value:"ACCOUNT"},
+    { id:2, value:"SERVICES"},
     { id:3, value:"SECURITY"},
   ]
 

@@ -9,9 +9,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:active,
-input:-webkit-autofill:focus {
+input:-webkit-autofill:focus,
+input, input:focus-visible{
   background-color: #FFFFFF !important;
   color: #555 !important;
   -webkit-box-shadow: 0 0 0 1000px #D3E4D8 inset !important;
   -webkit-text-fill-color: #555555 !important;
+  -webkit-appearance: none;
 }

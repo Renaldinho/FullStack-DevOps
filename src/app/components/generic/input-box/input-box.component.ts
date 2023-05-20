@@ -1,11 +1,11 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-input-field',
-  templateUrl: './input-field.component.html',
-  styleUrls: ['./input-field.component.scss']
+  selector: 'app-input-box',
+  templateUrl: './input-box.component.html',
+  styleUrls: ['./input-box.component.css']
 })
-export class InputFieldComponent {
+export class InputBoxComponent {
 
   @ViewChild("InputField") inputField: ElementRef | undefined
 
@@ -29,5 +29,6 @@ export class InputFieldComponent {
   onBlur() {
     this.isFocused = false;
   }
+
 
 }
