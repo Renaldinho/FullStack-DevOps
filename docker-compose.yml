@@ -1,6 +1,6 @@
 version: '3'
 services:
-  app:
+  localhost:
     build:
       context: .
       dockerfile: docker/production/Dockerfile
@@ -14,4 +14,4 @@ services:
       dockerfile: docker/test/Dockerfile
     command: npx cypress open --config-file cypress.config.ts
     depends_on:
-      - app
+      - localhost
