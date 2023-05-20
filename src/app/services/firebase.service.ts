@@ -48,6 +48,13 @@ export class FirebaseService {
     this.auth = firebase.auth();
     this.storage = firebase.storage();
 
+    // this.firestore.useEmulator("localhost",8080)
+    // this.auth.useEmulator("http://localhost:9099/")
+    // this.storage.useEmulator("localhost",9199);
+
+
+
+
     this.facebookProvider = new FacebookAuthProvider();
     this.googleProvider = new GoogleAuthProvider();
     this.twitterProvider = new TwitterAuthProvider();
@@ -105,7 +112,6 @@ export class FirebaseService {
 
   public register(email: any, password: any) {
     this.auth.createUserWithEmailAndPassword(email,password).then((userCredentials) => {
-      this.persistUser(userCredentials);
     });
   }
   public addHobby(hobby: any) {
@@ -126,30 +132,13 @@ export class FirebaseService {
   googleSignInPopup() {
     this.auth.signInWithPopup(this.googleProvider)
       .then((userCredentials) => {
-        this.persistUser(userCredentials);
       })
       .catch((error) => console.log(error));
-  }
-
-  private persistUser(userCredentials: firebase.auth.UserCredential) {
-    var userData: User = {
-      uid: userCredentials.user?.uid,
-      email: userCredentials.user?.email,
-      address: '', firstName: '', lastName: '', phone: '',username: ''
-    }
-    this.firestore.collection(this.userCollectionPath)
-      .doc(userCredentials.user?.uid)
-      .set(userData)
-      .catch((error) => {
-        console.log(error)
-      })
-
   }
 
   facebookSignInPopup() {
     this.auth.signInWithPopup(this.facebookProvider)
       .then((userCredentials) => {
-        this.persistUser(userCredentials)
       })
       .catch((error) => console.log(error));
   }
@@ -157,7 +146,6 @@ export class FirebaseService {
   twitterSignInPopup() {
     this.auth.signInWithPopup(this.twitterProvider)
       .then((userCredentials) => {
-        this.persistUser(userCredentials)
       })
       .catch((error) => console.log(error));
   }
