@@ -37,6 +37,7 @@ export class FirebaseService {
   userHobbiesPath: string = "hobbies"
 
   userAvatarPath: string = 'avatars'
+  serviceImagePAth: string = 'services'
 
 
   currentUserAvatarURL: string = DefaultUserData.AVATAR_URL;
@@ -155,15 +156,12 @@ export class FirebaseService {
   private loadUserData() {
     //Load written data
 
-    console.log('before')
     this.firestore
       .collection(this.userCollectionPath)
       .doc(this.auth.currentUser?.uid)
       .onSnapshot((documentSnapshot) => {
         this.userDataStore.setUserData(documentSnapshot.data())
-        console.log('during')
     });
-    console.log('after')
 
     //Load image data
     this.storage
@@ -173,6 +171,13 @@ export class FirebaseService {
         this.userDataStore.setAvatarImageUrl(imageUrl);
       }).catch((error) => console.log(error))
 
+
+    this.storage
+      .ref(this.serviceImagePAth)
+      .child(this.auth.currentUser?.uid+"")
+      .getDownloadURL().then((imageUrl) => {
+      this.userDataStore.setServiceImageUrl(imageUrl);
+    }).catch((error) => console.log(error))
   }
 
   updateUserData(user: any) {
@@ -189,5 +194,14 @@ export class FirebaseService {
 
   updateServiceData(serviceData: ServiceData) {
     this.axios.updateServiceData(this.auth.currentUser?.uid,serviceData)
+  }
+
+  async updateServiceImage($event) {
+    const img = $event.target.files[0];
+    const uploadTask = await this.storage
+      .ref(this.serviceImagePAth)
+      .child(this.auth.currentUser?.uid+"")
+      .put(img);
+    this.loadUserData()
   }
 }

@@ -1,6 +1,7 @@
 <div class="wrapper w-full h-full">
   <div class="left-area  h-full flex justify-center items-center p-4 box-border">
-    <img src="https://friconix.com/png/fi-cnluxl-anonymous-user-circle.png" class="w-full rounded-lg">
+    <img [src]="userDataStore.getServiceImageUrl()" (click)="fileInput.click()" class="w-full rounded-full">
+    <input hidden #fileInput type="file" (change)="firebase.updateServiceImage($event)">
   </div>
   <div class="right-area flex flex-col w-full h-full box-border p-4 justify-end space-y-2">
     <app-input-field [(value)]="user.serviceName" #nameInput labelText="Name" iconSrc="fa-sharp fa-solid fa-building" ></app-input-field>

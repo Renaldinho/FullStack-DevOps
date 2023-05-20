@@ -16,11 +16,12 @@ export class ServiceManagementComponent implements OnInit{
 
   user: any
 
-  constructor(public firebase: FirebaseService,private userDataStore: UserDataStore) {
+  constructor(public firebase: FirebaseService,public userDataStore: UserDataStore) {
   }
 
   ngOnInit(): void {
     this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserInputData()))
+    console.log(this.userDataStore.getServiceImageUrl())
   }
 
   @ViewChild("nameInput") nameInput: InputFieldComponent | undefined

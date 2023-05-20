@@ -15,6 +15,8 @@ export class UserDataStore {
   private imageUrlSubject = new BehaviorSubject<string>(this.defaultAvatarImageUrl);
   imageUrl$ = this.imageUrlSubject.asObservable();
 
+  private serviceImageUrl: string = DefaultUserData.SERVICE_URL;
+
   setUserData(data: any) {
     this.userData.next(data)
     this.userInputData = data;
@@ -35,5 +37,13 @@ export class UserDataStore {
 
   public getUserInputData(){
     return this.userInputData;
+  }
+
+  setServiceImageUrl(imageUrl: string) {
+    this.serviceImageUrl = imageUrl;
+  }
+
+  getServiceImageUrl() {
+    return this.serviceImageUrl;
   }
 }
