@@ -8,7 +8,7 @@ services:
       - PORT=4200
     ports:
       - "4200:8000"
-  e2e:
+  cypress:
     image: cypress
     build: ./e2e
     container_name: cypress
@@ -22,14 +22,3 @@ services:
     environment:
       - CYPRESS_baseUrl=http://web
     command: npx cypress run
-    # mount the host directory e2e/cypress and the file e2e/cypress.config.js as
-    # volumes within the container
-    # this means that:
-    #  1. anything that Cypress writes to these folders (e.g., screenshots,
-    #     videos) appears also on the Docker host's filesystem
-    #  2. any change that the developer applies to Cypress files on the host
-    #     machine immediately takes effect within the e2e container (no docker
-    #     rebuild required).
-    volumes:
-      - ./e2e/cypress:/app/cypress
-      - ./e2e/cypress.config.js:/app/cypress.config.js
