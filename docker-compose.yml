@@ -12,6 +12,6 @@ services:
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: cypress open --config-file cypress.config.js
+    command: cypress open --config-file cypress.config.ts
     depends_on:
       - app
