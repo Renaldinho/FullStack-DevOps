@@ -12,6 +12,5 @@ services:
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: sh -c "npx cypress cache clear && npx cypress open --config-file cypress/e2e/cypress.config.js"
     depends_on:
       - localhost
