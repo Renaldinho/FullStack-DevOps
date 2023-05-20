@@ -15,3 +15,5 @@ services:
     command: cypress open --config-file cypress.config.ts
     depends_on:
       - app
+    links:
+      - app
