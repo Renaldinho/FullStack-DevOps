@@ -5,9 +5,9 @@ services:
       context: .
       dockerfile: docker/production/Dockerfile
     environment:
-      - PORT=4000
+      - PORT=4200
     ports:
-      - "4000:8000"
+      - "4200:8000"
   cypress:
     build:
       context: .
