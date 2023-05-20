@@ -16,7 +16,7 @@ export enum NotificationTypes {
 }
 
 export interface ServiceData {
-  name: string | undefined;
+  serviceName: string | undefined;
   career: string | undefined;
   description: string | undefined;
   price: string | undefined;

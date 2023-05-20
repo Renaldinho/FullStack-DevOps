@@ -1,19 +1,26 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {InputFieldComponent} from "../../generic/input-field/input-field.component";
 import {InputBoxComponent} from "../../generic/input-box/input-box.component";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {FirebaseService} from "../../../services/firebase.service";
 import firebase from "firebase/compat/app";
 import {ServiceData} from "../../../interfaces/common-interfaces.service";
+import {UserDataStore} from "../../../stores/user-data.store";
 
 @Component({
   selector: 'app-service-management',
   templateUrl: './service-management.component.html',
   styleUrls: ['./service-management.component.scss']
 })
-export class ServiceManagementComponent {
+export class ServiceManagementComponent implements OnInit{
 
-  constructor(public firebase: FirebaseService) {
+  user: any
+
+  constructor(public firebase: FirebaseService,private userDataStore: UserDataStore) {
+  }
+
+  ngOnInit(): void {
+    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserInputData()))
   }
 
   @ViewChild("nameInput") nameInput: InputFieldComponent | undefined
@@ -23,12 +30,16 @@ export class ServiceManagementComponent {
 
   saveData() {
     const serviceData: ServiceData = {
-      name: this.nameInput?.value,
+      serviceName: this.nameInput?.value,
       career: this.careerInput?.value,
       description: this.descriptionInput?.value,
       price: this.priceInput?.value
     }
     this.firebase.updateServiceData(serviceData);
+  }
+
+  resetData() {
+    this.user = JSON.parse(JSON.stringify(this.userDataStore.getUserInputData()));
   }
 }
 
