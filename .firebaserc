@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "fullstack-99235"
+  },
+  "targets": {},
+  "etags": {
+    "fullstack-99235": {
+      "extensionInstances": {}
+    }
   }
 }

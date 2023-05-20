@@ -18,6 +18,7 @@ export class UserDataStore {
   setUserData(data: any) {
     this.userData.next(data)
     this.userInputData = data;
+    console.log(data)
   }
 
   setAvatarImageUrl(imageUrl: string){

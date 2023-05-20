@@ -15,3 +15,10 @@ export enum NotificationTypes {
   INFO = 'info'
 }
 
+export interface ServiceData {
+  name: string | undefined;
+  career: string | undefined;
+  description: string | undefined;
+  price: string | undefined;
+}
+

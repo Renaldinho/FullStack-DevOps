@@ -14,7 +14,9 @@ export class ErrorManagerService implements ErrorHandler{
 
     let message = this.getDisplayMessage(error);
     this.notificationService.createMessage(NotificationType.Error,message,'Error')
+    console.error(error)
   }
+
 
   /**
    * Compare error code of error to known or used codes, and change the error message accordingly
@@ -26,7 +28,6 @@ export class ErrorManagerService implements ErrorHandler{
   private getDisplayMessage(error: any) {
     if (error.rejection && error.rejection.hasOwnProperty("code")) {
     } else {
-      console.error(error);
       return error.message;
     }
 

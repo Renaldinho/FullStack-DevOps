@@ -8,7 +8,7 @@ import {DefaultUserData} from "../interfaces/default-user-data";
 import * as config from '../../../firebaseconfig.js'
 import {User} from "../interfaces/User";
 import {Router} from "@angular/router";
-import {RoutingPaths} from "../interfaces/common-interfaces.service";
+import {RoutingPaths, ServiceData} from "../interfaces/common-interfaces.service";
 import {UserDataStore} from "../stores/user-data.store";
 import {NotificationService} from "./notification.service";
 import {NotificationType} from "angular2-notifications";
@@ -16,6 +16,7 @@ import {ErrorManagerService} from "./error-manager.service";
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import TwitterAuthProvider = firebase.auth.TwitterAuthProvider;
+import {AxiosService} from "./axios.service";
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,7 @@ export class FirebaseService {
 
 
 
-  constructor(private router: Router, private userDataStore: UserDataStore,private errorManager:ErrorManagerService, private notifService: NotificationService) {
+  constructor(private router: Router, private userDataStore: UserDataStore,private errorManager:ErrorManagerService, private notifService: NotificationService,public axios: AxiosService) {
     this.firebaseApplication = firebase.initializeApp(config.firebaseConfig)
     this.firestore = firebase.firestore();
     this.auth = firebase.auth();
@@ -76,6 +77,7 @@ export class FirebaseService {
 
   private handleSignIn() {
     this.loadUserData();
+    console.log('before')
     this.router.navigate([RoutingPaths.HOME])
   }
 
@@ -152,12 +154,16 @@ export class FirebaseService {
 
   private loadUserData() {
     //Load written data
+
+    console.log('before')
     this.firestore
       .collection(this.userCollectionPath)
       .doc(this.auth.currentUser?.uid)
       .onSnapshot((documentSnapshot) => {
-    this.userDataStore.setUserData(documentSnapshot.data())
+        this.userDataStore.setUserData(documentSnapshot.data())
+        console.log('during')
     });
+    console.log('after')
 
     //Load image data
     this.storage
@@ -179,5 +185,9 @@ export class FirebaseService {
 
   private handleSuccess() {
     this.notifService.createMessage(NotificationType.Success,'',"Success")
+  }
+
+  updateServiceData(serviceData: ServiceData) {
+    this.axios.updateServiceData(this.auth.currentUser?.uid,serviceData)
   }
 }
