@@ -24,6 +24,12 @@ export class ErrorManagerService implements ErrorHandler{
    * @private
    */
   private getDisplayMessage(error: any) {
+    if (error.rejection && error.rejection.hasOwnProperty("code")) {
+    } else {
+      console.error(error);
+      return error.message;
+    }
+
     const errorCode = error.rejection.code;
     let message = 'An unknown error has occured'
 
@@ -31,8 +37,6 @@ export class ErrorManagerService implements ErrorHandler{
       case 'auth/user-not-found':
         message = 'User matching these credentials doesn\'t exist'
         break
-      default:
-        console.error(error)
     }
     return message
   }
