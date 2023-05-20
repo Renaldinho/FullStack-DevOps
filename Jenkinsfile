@@ -8,6 +8,10 @@ pipeline {
     tools {
         nodejs 'node-20'
     }
+
+
+    stages {
+       
         stage('Docker Compose') {
                 steps {
                     sh 'docker-compose up --abort-on-container-exit'
@@ -51,4 +55,5 @@ pipeline {
                 }
             }
         }
+    }
 }
