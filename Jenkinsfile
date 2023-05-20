@@ -12,24 +12,46 @@ pipeline {
 
     stages {
 
-        stage('Docker Compose') {
+    stage('Install Dependencies') {
                 steps {
-                    sh 'docker-compose up --abort-on-container-exit'
+                    sh 'npm install --force'
+                    sh 'npm install -g @angular/cli --force'
+                    sh 'npm install mocha-junit-reporter --save-dev --legacy-peer-deps'
                 }
-                post {
-                    always {
-                        sh 'docker-compose down'
-                    }
+            }
+            stage('Run Application') {
+                steps {
+                    sh 'npm start &'
                 }
             }
 
-        stage('Delete Docker Images') {
-            steps {
-                script {
-                    sh 'docker rmi -f \$(docker images -q)'
-                }
-            }
-        }
+            stage('Tests') {
+                        steps {
+                            wrap([$class: 'Xvfb']) {
+                                sh 'npm run cypress:run -- --reporter mocha-junit-reporter --reporter-options mochaFile=result.xml'
+                            }
+                            junit 'result.xml'
+                        }
+                    }
+
+//         stage('Docker Compose') {
+//                 steps {
+//                     sh 'docker-compose up --abort-on-container-exit'
+//                 }
+//                 post {
+//                     always {
+//                         sh 'docker-compose down'
+//                     }
+//                 }
+//             }
+//
+//         stage('Delete Docker Images') {
+//             steps {
+//                 script {
+//                     sh 'docker rmi -f \$(docker images -q)'
+//                 }
+//             }
+//         }
 
 
         stage('Build production Image') {
