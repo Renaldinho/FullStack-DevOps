@@ -8,11 +8,10 @@ services:
       - PORT=4200
     ports:
       - "4200:8000"
-
   cypress:
     build:
       context: .
       dockerfile: docker/test/Dockerfile
-    command: ./run-tests-config.sh
+    command: cypress open --config-file cypress.config.ts
     depends_on:
       - app
