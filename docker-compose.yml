@@ -1,6 +1,6 @@
 version: '3'
 services:
-  localhost:
+  app:
     build:
       context: .
       dockerfile: docker/production/Dockerfile
@@ -13,7 +13,7 @@ services:
     build: ./e2e
     container_name: cypress
     depends_on:
-      - web
+      - app
     # note: inside e2e container, the network allows accessing
     # "web" host under name "web"
     # so "curl http://web" would return whatever the webserver
