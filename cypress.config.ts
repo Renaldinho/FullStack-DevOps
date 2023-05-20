@@ -1,15 +1,14 @@
-import { defineConfig } from 'cypress'
+import { defineConfig } from 'cypress';
 
 export default defineConfig({
   e2e: {
-    baseUrl: "http://app:8000"
+    baseUrl: 'http://localhost:4200',
   },
-
   component: {
-    testFiles: '**/*.cy.ts',
     devServer: {
       framework: 'angular',
       bundler: 'webpack',
     },
+    specPattern: '**/*.cy.ts',
   },
 })
