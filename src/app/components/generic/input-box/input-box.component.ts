@@ -10,7 +10,6 @@ export class InputBoxComponent {
   @ViewChild("InputField") inputField: ElementRef | undefined
 
   @Input() labelText: string | undefined;
-  @Input() inputType: string = 'text';
   @Input() iconSrc: string | undefined;
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();
