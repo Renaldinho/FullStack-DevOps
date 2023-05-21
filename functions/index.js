@@ -20,16 +20,34 @@ exports.persistUser = functions.auth.user().onCreate((user) => {
     username: ''
   };
 
+  const serviceData = {
+    uid: user.uid,
+    serviceName: '',
+    career: '',
+    description: '',
+    price: '',
+    enabled: false
+  };
+
   // Get a reference to the Firestore collection
-  const userCollectionPath = 'users'; // replace 'users' with your actual collection path
   const db = admin.firestore();
+  const userCollectionPath = 'users';
   const userRef = db.collection(userCollectionPath).doc(user.uid);
 
-  // Set the user document in Firestore
-  return userRef.set(userData)
-    .catch((error) => {
-      console.error('Error writing user document in Firestore', error);
-    });
+  const serviceCollectionPath = 'services';
+  const serviceRef = db.collection(serviceCollectionPath).doc(user.uid);
+
+  const setUserPromise = userRef.set(userData).catch((error) => {
+    console.error('Error writing user document in Firestore', error);
+  });
+
+  // Set the service document in Firestore
+  const setServicePromise = serviceRef.set(serviceData).catch((error) => {
+    console.error('Error writing service document in Firestore', error);
+  });
+
+  // Return a Promise that resolves when both write operations are complete
+  return Promise.all([setUserPromise, setServicePromise]);
 });
 
 app.put('/updateServiceData', async (req, res) => {
@@ -40,7 +58,7 @@ app.put('/updateServiceData', async (req, res) => {
   }
 
   try {
-    const userRef = admin.firestore().collection('users').doc(uid);
+    const userRef = admin.firestore().collection('services').doc(uid);
     await userRef.set(serviceData, { merge: true });
     res.status(200).json({ message: "Service data updated successfully." });
   } catch (error) {

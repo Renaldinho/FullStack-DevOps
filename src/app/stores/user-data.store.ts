@@ -17,6 +17,8 @@ export class UserDataStore {
 
   private serviceImageUrl: string = DefaultUserData.SERVICE_URL;
 
+  private serviceData: any
+
   setUserData(data: any) {
     this.userData.next(data)
     this.userInputData = data;
@@ -45,5 +47,13 @@ export class UserDataStore {
 
   getServiceImageUrl() {
     return this.serviceImageUrl;
+  }
+
+  setServiceData(data: any) {
+    this.serviceData = data
+  }
+
+ getServiceData(){
+    return this.serviceData;
   }
 }

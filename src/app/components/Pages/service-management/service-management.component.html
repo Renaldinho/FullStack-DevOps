@@ -4,11 +4,11 @@
     <input hidden #fileInput type="file" (change)="firebase.updateServiceImage($event)">
   </div>
   <div class="right-area flex flex-col w-full h-full box-border p-4 justify-end space-y-2">
-    <app-input-field [(value)]="user.serviceName" #nameInput labelText="Name" iconSrc="fa-sharp fa-solid fa-building" ></app-input-field>
-    <app-input-field [(value)]="user.career" #careerInput labelText="Career" iconSrc="fa-solid fa-school"></app-input-field>
-    <app-input-box [(value)]="user.description" #descriptionInput labelText="Description" class="flex flex-col h-64"></app-input-box>
+    <app-input-field [(value)]="serviceData.serviceName" #nameInput labelText="Name" iconSrc="fa-sharp fa-solid fa-building" ></app-input-field>
+    <app-input-field [(value)]="serviceData.career" #careerInput labelText="Career" iconSrc="fa-solid fa-school"></app-input-field>
+    <app-input-box [(value)]="serviceData.description" #descriptionInput labelText="Description" class="flex flex-col h-64"></app-input-box>
     <div class="flex flex-row justify-end items-start pt-12 space-x-4">
-      <app-input-field [(value)]="user.price" #priceInput labelText="Pricing" inputType="number" iconSrc="fa-solid fa-money-bills" class="w-full "></app-input-field>
+      <app-input-field [(value)]="serviceData.price" #priceInput labelText="Pricing" inputType="number" iconSrc="fa-solid fa-money-bills" class="w-full "></app-input-field>
       <app-button (click)="saveData()" buttonValue="Save"></app-button>
     </div>
   </div>

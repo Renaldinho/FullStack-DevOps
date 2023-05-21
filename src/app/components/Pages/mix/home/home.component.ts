@@ -19,9 +19,6 @@ export class HomeComponent implements OnInit{
     this.firebaseService.signOut();
   }
 
-  public addHobby(hobby: any) {
-    this.firebaseService.addHobby(hobby);
-  }
 
   ngOnInit(): void {
     this.firebaseService.getServices();

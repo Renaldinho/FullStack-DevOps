@@ -20,5 +20,6 @@ export interface ServiceData {
   career: string | undefined;
   description: string | undefined;
   price: string | undefined;
+  enabled: boolean
 }
 

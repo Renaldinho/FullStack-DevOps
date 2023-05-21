@@ -34,7 +34,7 @@ export class FirebaseService {
 
 
   userCollectionPath: string = "users"
-  userHobbiesPath: string = "hobbies"
+  serviceCollectionPath: string = 'services'
 
   userAvatarPath: string = 'avatars'
   serviceImagePAth: string = 'services'
@@ -153,6 +153,15 @@ export class FirebaseService {
         this.userDataStore.setUserData(documentSnapshot.data())
     });
 
+    //load service data
+    this.firestore
+      .collection(this.serviceCollectionPath)
+      .doc(this.auth.currentUser?.uid)
+      .onSnapshot((documentSnapshot) => {
+        this.userDataStore.setServiceData(documentSnapshot.data())
+        console.log(documentSnapshot.data())
+      })
+
     //Load image data
     this.storage
       .ref(this.userAvatarPath)
@@ -160,7 +169,6 @@ export class FirebaseService {
       .getDownloadURL().then((imageUrl) => {
         this.userDataStore.setAvatarImageUrl(imageUrl);
       }).catch((error) => console.log(error))
-
 
     this.storage
       .ref(this.serviceImagePAth)
@@ -196,21 +204,10 @@ export class FirebaseService {
   }
 
   getServices() {
-    return Promise.all(
-      collectionNames.map(collection =>
-        db.collection(collection).where('your-field-name', '!=', null).get()
-      )
-    )
-      .then(querySnapshots => {
-        return querySnapshots.map(querySnapshot =>
-          querySnapshot.docs.map(doc => doc.data())
-        ).flat(); // Flattens the array of arrays into a single array
+    this.firestore.collection(this.serviceCollectionPath)
+      .get()
+      .then(querySnapshot => {
+        return querySnapshot.docs.map(doc => doc.data());
       })
-      .catch((error) => {
-        console.error("Error retrieving documents: ", error);
-        throw error; // If you want to handle error elsewhere, you can throw it after logging
-      });
   }
-
-  module.exports = getDocumentsFromCollections;
 }
