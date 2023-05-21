@@ -1,12 +1,12 @@
-<div class="container w-full h-full box-border px-12 py-5">
+<div class="container w-full h-full box-border px-4 py-5">
   <div class="title flex w-full h-full items-center justify-start">
     <header class="text-2xl text-black font-bold uppercase">Service listings</header>
   </div>
   <div class="content w-full h-full h-full box-border">
-    <div class="items flex-row flex w-full justify-center items-start">
+    <div class="items flex-col flex w-full justify-start items-center overflow-y-auto overflow-x-visible box-border space-y-4">
 
       <!--  Item    -->
-      <app-service-item *ngFor="let service of services" [serviceData]="service" class="w-full"></app-service-item>
+      <app-service-item *ngFor="let service of services" [serviceData]="service" class="w-11/12"></app-service-item>
 
     </div>
     <div class="pagination "></div>

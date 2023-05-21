@@ -1,9 +1,9 @@
-<div class="border-solid pb-2 border-b-2 border-x-0 border-t-0 border-b-light-accent transition-all ease-out duration-300 {{!detailsOpen ? 'h-24' : 'h-80'}}">
+<div class="w-full box-border border-solid pb-2 border-b-2 border-x-0 border-t-0 border-b-light-accent transition-all ease-out duration-300 {{!detailsOpen ? 'h-28' : 'h-96'}}">
 
   <!--Details not open-->
-  <div *ngIf="!detailsOpen" class="container h-24 w-full px-2 space-x-4 ">
-    <div class="image box-border flex justify-center items-center">
-      <img [src]="serviceData.imageUrl" class="object-fill w-full h-full rounded-full">
+  <div *ngIf="!detailsOpen" class="container h-fit w-full px-2 space-x-4 box-border">
+    <div class="image flex justify-center items-center">
+      <img [src]="serviceData.imageUrl" class="object-fill w-24 h-24 rounded-full">
     </div>
     <div class="info flex flex-col justify-center items-start">
       <header [innerText]="serviceData.serviceName" class="text-xl font-bold">service name</header>
@@ -13,11 +13,10 @@
       <app-button (click)="openDetails()" buttonValue="details"></app-button>
     </div>
   </div>
-
   <!--Details open-->
-  <div *ngIf="detailsOpen" class="details-container">
-    <div class="left-area  h-full flex justify-center items-center p-4 box-border">
-      <img [src]="serviceData.imageUrl"class="w-full rounded-full">
+  <div *ngIf="detailsOpen" class="details-container h-full w-full box-border">
+    <div class="left-area h-full flex justify-center items-center p-4 box-border">
+      <img [src]="serviceData.imageUrl" class="w-full rounded-full w-64 h-64">
     </div>
     <div class="right-area flex flex-col w-full h-full box-border p-4 justify-end items-center space-y-2">
       <header [innerText]="serviceData.serviceName" class="w-full text-4xl font-black text-black capitalize">service name</header>
