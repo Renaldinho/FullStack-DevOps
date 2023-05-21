@@ -1,6 +1,7 @@
 import {Component, QueryList, ViewChildren} from '@angular/core';
 import {NavButtonComponent} from "../../../generic/nav-button/nav-button.component";
 import {RoutingPaths} from "../../../../interfaces/common-interfaces.service";
+import {FirebaseService} from "../../../../services/firebase.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,6 +18,9 @@ export class NavBarComponent {
 
   @ViewChildren(NavButtonComponent) navButtons: QueryList<NavButtonComponent> | undefined;
 
+  constructor(public firebase: FirebaseService) {
+  }
+
   onButtonSelect(button: ButtonValue) {
     this.navButtons?.forEach(instance => {
       if (instance.buttonId !== button.id)
@@ -24,6 +28,10 @@ export class NavBarComponent {
       else
         instance.isSelected = true
     })
+  }
+
+  handleLogOut() {
+    this.firebase.signOut();
   }
 }
 

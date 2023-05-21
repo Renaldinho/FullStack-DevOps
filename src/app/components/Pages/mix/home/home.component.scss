@@ -1,0 +1,26 @@
+.container {
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  grid-template-areas: 'title'
+                       'content';
+}
+
+.title {
+  grid-area: title;
+}
+
+.content {
+  grid-area: content;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  grid-template-areas: "items"
+                       "pagination";
+}
+
+.items {
+  grid-area: items;
+}
+
+.pagination {
+  grid-area: pagination;
+}

@@ -117,16 +117,6 @@ export class FirebaseService {
     this.auth.createUserWithEmailAndPassword(email,password).then((userCredentials) => {
     });
   }
-  public addHobby(hobby: any) {
-    console.log(this.auth.currentUser)
-    this.firestore.collection(this.userCollectionPath)
-      .doc(this.auth.currentUser?.uid)
-      .collection(this.userHobbiesPath)
-      .add({Hobby: hobby})
-      .catch((error) => {
-        console.log(error)
-      })
-  }
 
   private resetUserData() {
     this.currentUserAvatarURL = DefaultUserData.AVATAR_URL;
@@ -204,4 +194,23 @@ export class FirebaseService {
       .put(img);
     this.loadUserData()
   }
+
+  getServices() {
+    return Promise.all(
+      collectionNames.map(collection =>
+        db.collection(collection).where('your-field-name', '!=', null).get()
+      )
+    )
+      .then(querySnapshots => {
+        return querySnapshots.map(querySnapshot =>
+          querySnapshot.docs.map(doc => doc.data())
+        ).flat(); // Flattens the array of arrays into a single array
+      })
+      .catch((error) => {
+        console.error("Error retrieving documents: ", error);
+        throw error; // If you want to handle error elsewhere, you can throw it after logging
+      });
+  }
+
+  module.exports = getDocumentsFromCollections;
 }

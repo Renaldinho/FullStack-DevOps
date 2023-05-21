@@ -12,5 +12,8 @@
     [path]="button.path"
   >
   </app-nav-button>
+  <div *ngIf="this.firebase.auth.currentUser" class="flex items-center justify-center mx-2">
+    <i class="text-white text-3xl cursor-pointer" (click)="handleLogOut()" [class]="'fa-solid fa-right-from-bracket'"></i>
+  </div>
 
 </div>

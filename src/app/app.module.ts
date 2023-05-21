@@ -26,6 +26,7 @@ import { SecuritySettingsComponent } from './components/Pages/security-settings/
 import {SimpleNotificationsModule} from "angular2-notifications";
 import {ErrorManagerService} from "./services/error-manager.service";
 import { InputBoxComponent } from './components/generic/input-box/input-box.component';
+import { ServiceItemComponent } from './components/blocks/service-item/service-item.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { InputBoxComponent } from './components/generic/input-box/input-box.comp
     AccountSettingsComponent,
     SecuritySettingsComponent,
     InputBoxComponent,
+    ServiceItemComponent,
   ],
   imports: [
     BrowserModule,

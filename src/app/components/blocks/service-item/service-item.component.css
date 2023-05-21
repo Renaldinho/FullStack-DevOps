@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: 100px 30% 1fr;
+  grid-template-areas: 'image info view-more';
+}
+
+.image {
+  grid-area: image;
+}
+
+.info {
+  grid-area: info;
+}
+
+.view-more {
+  grid-area: view-more;
+}

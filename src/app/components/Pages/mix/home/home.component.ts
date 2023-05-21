@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FirebaseService} from "../../../../services/firebase.service";
 
 @Component({
@@ -6,9 +6,10 @@ import {FirebaseService} from "../../../../services/firebase.service";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   hobby: any;
+  services: any[] = [];
 
 
   constructor(public firebaseService: FirebaseService) {
@@ -20,5 +21,9 @@ export class HomeComponent {
 
   public addHobby(hobby: any) {
     this.firebaseService.addHobby(hobby);
+  }
+
+  ngOnInit(): void {
+    this.firebaseService.getServices();
   }
 }
