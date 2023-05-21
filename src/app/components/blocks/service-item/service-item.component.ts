@@ -8,12 +8,16 @@ import {DefaultUserData} from "../../../interfaces/default-user-data";
 })
 export class ServiceItemComponent  {
 
-  imageUrl: string = DefaultUserData.SERVICE_URL;
+  detailsOpen: boolean = false
 
   @Input() serviceData: any
 
 
   openDetails() {
-    console.log(this.serviceData);
+    this.detailsOpen = true
+  }
+
+  closeDetails() {
+    this.detailsOpen = false
   }
 }

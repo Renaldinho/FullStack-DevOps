@@ -1,12 +1,33 @@
-<div class="container h-24 w-full px-2 space-x-4 border-solid pb-2 border-b-2 border-x-0 border-t-0 border-b-light-accent">
-  <div class="image box-border flex justify-center items-center">
-    <img [src]="serviceData.imageUrl" class="object-fill w-full h-full rounded-full">
+<div class="border-solid pb-2 border-b-2 border-x-0 border-t-0 border-b-light-accent transition-all ease-out duration-300 {{!detailsOpen ? 'h-24' : 'h-80'}}">
+
+  <!--Details not open-->
+  <div *ngIf="!detailsOpen" class="container h-24 w-full px-2 space-x-4 ">
+    <div class="image box-border flex justify-center items-center">
+      <img [src]="serviceData.imageUrl" class="object-fill w-full h-full rounded-full">
+    </div>
+    <div class="info flex flex-col justify-center items-start">
+      <header [innerText]="serviceData.serviceName" class="text-xl font-bold">service name</header>
+      <span [innerText]="serviceData.career" class="text-base font-medium">career</span>
+    </div>
+    <div class="view-more flex justify-end items-center">
+      <app-button (click)="openDetails()" buttonValue="details"></app-button>
+    </div>
   </div>
-  <div class="info flex flex-col justify-center items-start">
-    <header [innerText]="serviceData.serviceName" class="text-xl font-bold">service name</header>
-    <span [innerText]="serviceData.career" class="text-base font-medium">career</span>
-  </div>
-  <div class="view-more flex justify-end items-center">
-    <app-button (click)="openDetails()" buttonValue="details"></app-button>
+
+  <!--Details open-->
+  <div *ngIf="detailsOpen" class="details-container">
+    <div class="left-area  h-full flex justify-center items-center p-4 box-border">
+      <img [src]="serviceData.imageUrl"class="w-full rounded-full">
+    </div>
+    <div class="right-area flex flex-col w-full h-full box-border p-4 justify-end items-center space-y-2">
+      <header [innerText]="serviceData.serviceName" class="w-full text-4xl font-black text-black capitalize">service name</header>
+      <header [innerText]="serviceData.career" class="w-full text-lg">service name</header>
+      <header [innerText]="serviceData.description" class="w-full text-lg">service name</header>
+
+      <div class="w-full flex flex-row justify-end items-center pt-12 space-x-4">
+        <header [innerText]="serviceData.price" class="w-full">price name</header>
+       <app-button (click)="closeDetails()" buttonValue="Close"></app-button>
+      </div>
+    </div>
   </div>
 </div>
