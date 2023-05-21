@@ -203,11 +203,24 @@ export class FirebaseService {
     this.loadUserData()
   }
 
-  getServices() {
-    this.firestore.collection(this.serviceCollectionPath)
-      .get()
-      .then(querySnapshot => {
-        return querySnapshot.docs.map(doc => doc.data());
-      })
+  async getEnabledServices() {
+    const servicesRef = this.firestore.collection(this.serviceCollectionPath);
+    const snapshot = await servicesRef.where('enabled', '==', true).get();
+
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return [];
+    }
+
+    let services: any[] = [];
+    snapshot.forEach(doc => {
+      let data = doc.data();
+      // Only add the service to the array if the uid is not equal to the current user's uid
+      if (data['uid'] !== this.auth.currentUser?.uid) {
+        services.push(data);
+      }
+    });
+
+    return services;
   }
 }
