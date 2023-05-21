@@ -6,8 +6,7 @@
     <div class="items flex-row flex w-full justify-center items-start">
 
       <!--  Item    -->
-      <app-service-item *ngFor="let service of services" class="w-full"></app-service-item>
-
+      <app-service-item *ngFor="let service of services" [serviceData]="service" class="w-full"></app-service-item>
 
     </div>
     <div class="pagination "></div>

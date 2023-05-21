@@ -1,10 +1,10 @@
 <div class="container h-24 w-full px-2 space-x-4 border-solid pb-2 border-b-2 border-x-0 border-t-0 border-b-light-accent">
   <div class="image box-border flex justify-center items-center">
-    <img [src]="imageUrl" class="object-fill w-full h-full rounded-full">
+    <img [src]="serviceData.imageUrl" class="object-fill w-full h-full rounded-full">
   </div>
   <div class="info flex flex-col justify-center items-start">
-    <header class="text-xl font-bold">service name</header>
-    <span class="text-base font-medium">career</span>
+    <header [innerText]="serviceData.serviceName" class="text-xl font-bold">service name</header>
+    <span [innerText]="serviceData.career" class="text-base font-medium">career</span>
   </div>
   <div class="view-more flex justify-end items-center">
     <app-button (click)="openDetails()" buttonValue="details"></app-button>

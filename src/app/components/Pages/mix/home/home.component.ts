@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.firebaseService.getEnabledServices().then((data) => {
       this.services = data;
+      console.log(data)
     })
   }
 }

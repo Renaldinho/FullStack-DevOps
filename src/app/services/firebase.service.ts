@@ -217,10 +217,18 @@ export class FirebaseService {
       let data = doc.data();
       // Only add the service to the array if the uid is not equal to the current user's uid
       if (data['uid'] !== this.auth.currentUser?.uid) {
+        this.storage
+          .ref(this.serviceImagePAth)
+          .child(doc.id)
+          .getDownloadURL()
+          .then((imageUrl) => {
+          data['imageUrl'] =  imageUrl;
+        }).catch((error) => {
+          data['imageUrl'] =  DefaultUserData.SERVICE_URL;
+        })
         services.push(data);
       }
     });
-
     return services;
   }
 }
