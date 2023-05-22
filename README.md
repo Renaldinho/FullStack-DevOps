@@ -1,4 +1,4 @@
-# FullStack
+# Handy connector
 
 This is a simple Angular web application using Firebase for backend services. It allows users to register, view profile information, update personal details, list their services, and browse through all the listed services.
 
