@@ -13,7 +13,7 @@ export class NavBarComponent {
   profileBtn: ButtonValue = {path: "",value: "",id: 0}
   pathValues: ButtonValue[] = [
     { path: RoutingPaths.HOME, value: 'HOME',id: 1},
-    //{ path: RoutingPaths.EXPLORE, value: 'EXPLORE',id: 2},
+    { path: RoutingPaths.EXPLORE, value: 'EXPLORE',id: 2},
   ];
 
   @ViewChildren(NavButtonComponent) navButtons: QueryList<NavButtonComponent> | undefined;
